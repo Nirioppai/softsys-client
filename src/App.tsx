@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { HelmetProvider, Helmet } from "react-helmet-async";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { CssBaseline } from "@material-ui/core";
+
+// Pages
+import LandingPage from "./containers/LandingPage";
+import NotFoundPage from "./containers/NotFoundPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <CssBaseline />
+      <HelmetProvider>
+        <Helmet
+          titleTemplate="%s - Human Resource Information System"
+          defaultTitle="Human Resource Information System"
+        />
+        <Router>
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <Route path="*" component={NotFoundPage} />
+          </Switch>
+        </Router>
+      </HelmetProvider>
+    </>
   );
 }
 
