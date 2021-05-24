@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Typography } from '@material-ui/core';
+import { MainLayout } from '../../components';
 
 const NotFound: FC = () => {
   return (
-    <>
-      <Helmet title='404' />
+    <MainLayout>
+      <Helmet title='Page not found' />
       <Typography variant='h1'>Page not found</Typography>
-    </>
+    </MainLayout>
   );
 };
 

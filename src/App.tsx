@@ -5,9 +5,7 @@ import { ThemeProvider, CssBaseline } from '@material-ui/core';
 import { theme } from './theme';
 
 // Pages
-import Portal from './pages/Portal';
-import Login from './pages/Login';
-import NotFound from './pages/NotFound';
+import { Home, Portal, Login, NotFound } from './pages';
 
 function App() {
   return (
@@ -20,8 +18,12 @@ function App() {
         />
         <BrowserRouter>
           <Switch>
+            {/* Auth */}
             <Route exact path='/' component={Portal} />
             <Route exact path='/login' component={Login} />
+
+            {/* Main */}
+            <Route exact path='/home' component={Home} />
 
             {/* Misc */}
             <Route path='*' component={NotFound} />

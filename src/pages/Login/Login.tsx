@@ -26,7 +26,11 @@ const Login: FC = () => {
       <Typography variant='subtitle1' style={{ marginBottom: '2rem' }}>
         USER TYPE HERE
       </Typography>
-      <TextField id='userId' label='User ID' />
+      <TextField
+        id='userId'
+        label='User ID'
+        defaultValue='JUST-CLICK-SIGN-IN'
+      />
       <TextField
         id='password'
         label='Password'
@@ -44,12 +48,16 @@ const Login: FC = () => {
             </InputAdornment>
           ),
         }}
+        defaultValue='1234'
       />
+      {/* Temporarily set as link to bypass login */}
       <Button
         variant='contained'
         fullWidth
         size='large'
         style={{ marginBottom: '2rem' }}
+        component={RouterLink}
+        to='/home'
       >
         Sign In
       </Button>

@@ -10,6 +10,7 @@ export const useStyles = makeStyles((theme: Theme) =>
     },
     loginForm: {
       display: 'flex',
+      backgroundColor: theme.palette.background.default,
     },
     loginFormContainer: {
       maxWidth: 500,
