@@ -1,6 +1,8 @@
-# softsys-client
+# Human Resource Information System: Client
 
 ## Installation
+
+Install [yarn](https://yarnpkg.com/) if you haven't yet.
 
 ## Running in Development
 
