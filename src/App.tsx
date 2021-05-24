@@ -1,29 +1,34 @@
-import React from "react";
-import { HelmetProvider, Helmet } from "react-helmet-async";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import { CssBaseline } from "@material-ui/core";
+import React from 'react';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import { ThemeProvider, CssBaseline } from '@material-ui/core';
+import { theme } from './theme';
 
 // Pages
-import LandingPage from "./containers/LandingPage";
-import NotFoundPage from "./containers/NotFoundPage";
+import Portal from './pages/Portal';
+import Login from './pages/Login';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <HelmetProvider>
         <Helmet
-          titleTemplate="%s - Human Resource Information System"
-          defaultTitle="Human Resource Information System"
+          titleTemplate='%s - Human Resource Information System'
+          defaultTitle='Human Resource Information System'
         />
-        <Router>
+        <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={LandingPage} />
-            <Route path="*" component={NotFoundPage} />
+            <Route exact path='/' component={Portal} />
+            <Route exact path='/login' component={Login} />
+
+            {/* Misc */}
+            <Route path='*' component={NotFound} />
           </Switch>
-        </Router>
+        </BrowserRouter>
       </HelmetProvider>
-    </>
+    </ThemeProvider>
   );
 }
 
