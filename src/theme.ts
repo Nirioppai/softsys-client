@@ -51,14 +51,25 @@ export const theme = createMuiTheme({
     },
   },
   overrides: {
-    MuiFormControl: {
-      marginNormal: {
-        marginTop: 0,
-        marginBottom: '1rem',
+    MuiCssBaseline: {
+      '@global': {
+        html: {
+          scrollBehavior: 'smooth',
+          scrollPaddingTop: '80px',
+          [defaultTheme.breakpoints.up('sm')]: {
+            scrollPaddingTop: '88px',
+          },
+        },
       },
+    },
+    MuiFormControl: {
       marginDense: {
         marginTop: 0,
         marginBottom: '0.5rem',
+      },
+      marginNormal: {
+        marginTop: 0,
+        marginBottom: '1rem',
       },
     },
   },
