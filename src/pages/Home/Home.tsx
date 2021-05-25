@@ -39,7 +39,7 @@ const items = [
   },
   {
     label: 'Employees',
-    link: '/Employees',
+    link: '/employees',
   },
   {
     label: 'Organizational Chart',

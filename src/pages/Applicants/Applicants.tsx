@@ -11,9 +11,8 @@ import {
   TableRow,
   Paper,
   IconButton,
-  Box,
+  TablePagination,
 } from '@material-ui/core';
-import { Pagination } from '@material-ui/lab';
 import {
   Information as InformationIcon,
   DotsVertical as DotsVerticalIcon,
@@ -41,8 +40,8 @@ const Applicants: FC = () => {
         Applicants
       </Typography>
       {isLoaded ? (
-        <>
-          <TableContainer component={Paper} style={{ marginBottom: '1.5rem' }}>
+        <Paper style={{ marginBottom: '1.5rem' }}>
+          <TableContainer>
             <Table>
               <TableHead>
                 <TableRow>
@@ -90,10 +89,16 @@ const Applicants: FC = () => {
               </TableBody>
             </Table>
           </TableContainer>
-          <Box display='flex' justifyContent='center'>
-            <Pagination count={10} color='primary' />
-          </Box>
-        </>
+          <TablePagination
+            rowsPerPageOptions={[10, 25, 100]}
+            component='div'
+            count={10}
+            rowsPerPage={10}
+            page={10}
+            onChangePage={() => {}}
+            onChangeRowsPerPage={() => {}}
+          />
+        </Paper>
       ) : (
         'Loading'
       )}
