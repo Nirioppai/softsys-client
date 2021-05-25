@@ -1,3 +1,4 @@
+export { default as Applicants } from './Applicants';
 export { default as Home } from './Home';
 export { default as Portal } from './Portal';
 export { default as NotFound } from './NotFound';
