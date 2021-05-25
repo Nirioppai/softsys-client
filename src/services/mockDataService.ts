@@ -7,3 +7,7 @@ const baseUrl = process.env.REACT_APP_MOCK_API_URL;
 export const getApplicants = () => {
   return axios.get(`${baseUrl}/applicants.json`);
 };
+
+export const getEmployees = () => {
+  return axios.get(`${baseUrl}/employees.json`);
+};
