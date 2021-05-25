@@ -50,7 +50,7 @@ const Applicants: FC = () => {
                   <TableCell>Position</TableCell>
                   <TableCell>Interview Date</TableCell>
                   <TableCell>Result</TableCell>
-                  <TableCell aria-label='actions' />
+                  <TableCell aria-label='actions' style={{ width: '6rem' }} />
                 </TableRow>
               </TableHead>
               <TableBody>

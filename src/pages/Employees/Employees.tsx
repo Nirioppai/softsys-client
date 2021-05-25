@@ -48,7 +48,7 @@ const Employees: FC = () => {
                   <TableCell>Name</TableCell>
                   <TableCell>Employee ID</TableCell>
                   <TableCell>Position</TableCell>
-                  <TableCell aria-label='actions' />
+                  <TableCell aria-label='actions' style={{ width: '6rem' }} />
                 </TableRow>
               </TableHead>
               <TableBody>
