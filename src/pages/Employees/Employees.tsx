@@ -1,5 +1,4 @@
 import React, { FC, useState, useEffect } from 'react';
-import { format } from 'date-fns';
 import { Helmet } from 'react-helmet-async';
 import {
   Typography,
@@ -19,26 +18,26 @@ import {
   DotsVertical as DotsVerticalIcon,
 } from 'mdi-material-ui';
 import { MainLayout } from '../../components';
-import { getApplicants } from '../../services';
-import { ApplicantTypes } from '../../types';
+import { getEmployees } from '../../services';
+import { EmployeeTypes } from '../../types';
 import { formatName } from '../../utils';
 
-const Applicants: FC = () => {
-  const [applicants, setApplicants] = useState<ApplicantTypes[]>([]);
+const Employees: FC = () => {
+  const [employees, setEmployees] = useState<EmployeeTypes[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    getApplicants()
-      .then((res) => setApplicants(res.data))
+    getEmployees()
+      .then((res) => setEmployees(res.data))
       .catch((err) => console.error(err))
       .finally(() => setIsLoaded(true));
   }, []);
 
   return (
     <MainLayout>
-      <Helmet title='Applicants' />
+      <Helmet title='Employees' />
       <Typography variant='h1' gutterBottom>
-        Applicants
+        Employees
       </Typography>
       {isLoaded ? (
         <>
@@ -47,30 +46,19 @@ const Applicants: FC = () => {
               <TableHead>
                 <TableRow>
                   <TableCell>Name</TableCell>
+                  <TableCell>Employee ID</TableCell>
                   <TableCell>Position</TableCell>
-                  <TableCell>Interview Date</TableCell>
-                  <TableCell>Result</TableCell>
                   <TableCell aria-label='actions' />
                 </TableRow>
               </TableHead>
               <TableBody>
-                {applicants.map((applicant) => (
-                  <TableRow key={applicant._id}>
+                {employees.map((employee) => (
+                  <TableRow key={employee._id}>
                     <TableCell style={{ fontWeight: 500 }}>
-                      {formatName(applicant)}
+                      {formatName(employee)}
                     </TableCell>
-                    <TableCell>{applicant.position}</TableCell>
-                    <TableCell>
-                      {format(
-                        new Date(
-                          applicant.interviewSchedule.year,
-                          applicant.interviewSchedule.month,
-                          applicant.interviewSchedule.day
-                        ),
-                        'P'
-                      )}
-                    </TableCell>
-                    <TableCell>{applicant.applicationResult}</TableCell>
+                    <TableCell>{employee.employeeId}</TableCell>
+                    <TableCell>{employee.position}</TableCell>
                     <TableCell align='right'>
                       <IconButton
                         size='small'
@@ -98,4 +86,4 @@ const Applicants: FC = () => {
   );
 };
 
-export default Applicants;
+export default Employees;
