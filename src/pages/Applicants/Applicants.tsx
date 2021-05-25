@@ -12,7 +12,10 @@ import {
   Paper,
   IconButton,
 } from '@material-ui/core';
-import { Information as InformationIcon } from 'mdi-material-ui';
+import {
+  Information as InformationIcon,
+  DotsVertical as DotsVerticalIcon,
+} from 'mdi-material-ui';
 import { MainLayout } from '../../components';
 import { getApplicants } from '../../services';
 import { ApplicantTypes } from './ApplicantTypes';
@@ -63,9 +66,12 @@ const Applicants: FC = () => {
                     )}
                   </TableCell>
                   <TableCell>{applicant.applicationResult}</TableCell>
-                  <TableCell>
-                    <IconButton>
-                      <InformationIcon />
+                  <TableCell align='right'>
+                    <IconButton size='small' style={{ marginRight: '0.25rem' }}>
+                      <InformationIcon fontSize='small' />
+                    </IconButton>
+                    <IconButton size='small' edge='end'>
+                      <DotsVerticalIcon fontSize='small' />
                     </IconButton>
                   </TableCell>
                 </TableRow>
