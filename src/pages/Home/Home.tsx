@@ -9,11 +9,15 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     buttonBase: {
       width: '100%',
+      borderRadius: theme.shape.borderRadius,
     },
     paper: {
-      padding: '1.5rem',
+      padding: theme.spacing(2),
       height: '100%',
       width: '100%',
+      [theme.breakpoints.up('sm')]: {
+        padding: theme.spacing(3),
+      },
     },
     itemLabel: {
       textAlign: 'center',
@@ -23,6 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
       height: 200,
       marginBottom: theme.spacing(2),
       backgroundColor: grey[300],
+      borderRadius: theme.shape.borderRadius,
     },
   })
 );
