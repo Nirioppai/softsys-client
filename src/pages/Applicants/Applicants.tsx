@@ -11,7 +11,9 @@ import {
   TableRow,
   Paper,
   IconButton,
+  Box,
 } from '@material-ui/core';
+import { Pagination } from '@material-ui/lab';
 import {
   Information as InformationIcon,
   DotsVertical as DotsVerticalIcon,
@@ -39,46 +41,54 @@ const Applicants: FC = () => {
         Applicants
       </Typography>
       {isLoaded ? (
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell>Position</TableCell>
-                <TableCell>Interview Date</TableCell>
-                <TableCell>Result</TableCell>
-                <TableCell aria-label='actions' />
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {applicants.map((applicant) => (
-                <TableRow key={applicant._id}>
-                  <TableCell>{formatName(applicant)}</TableCell>
-                  <TableCell>{applicant.position}</TableCell>
-                  <TableCell>
-                    {format(
-                      new Date(
-                        applicant.interviewSchedule.year,
-                        applicant.interviewSchedule.month,
-                        applicant.interviewSchedule.day
-                      ),
-                      'P'
-                    )}
-                  </TableCell>
-                  <TableCell>{applicant.applicationResult}</TableCell>
-                  <TableCell align='right'>
-                    <IconButton size='small' style={{ marginRight: '0.25rem' }}>
-                      <InformationIcon fontSize='small' />
-                    </IconButton>
-                    <IconButton size='small' edge='end'>
-                      <DotsVerticalIcon fontSize='small' />
-                    </IconButton>
-                  </TableCell>
+        <>
+          <TableContainer component={Paper} style={{ marginBottom: '1.5rem' }}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Position</TableCell>
+                  <TableCell>Interview Date</TableCell>
+                  <TableCell>Result</TableCell>
+                  <TableCell aria-label='actions' />
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              </TableHead>
+              <TableBody>
+                {applicants.map((applicant) => (
+                  <TableRow key={applicant._id}>
+                    <TableCell>{formatName(applicant)}</TableCell>
+                    <TableCell>{applicant.position}</TableCell>
+                    <TableCell>
+                      {format(
+                        new Date(
+                          applicant.interviewSchedule.year,
+                          applicant.interviewSchedule.month,
+                          applicant.interviewSchedule.day
+                        ),
+                        'P'
+                      )}
+                    </TableCell>
+                    <TableCell>{applicant.applicationResult}</TableCell>
+                    <TableCell align='right'>
+                      <IconButton
+                        size='small'
+                        style={{ marginRight: '0.25rem' }}
+                      >
+                        <InformationIcon fontSize='small' />
+                      </IconButton>
+                      <IconButton size='small' edge='end'>
+                        <DotsVerticalIcon fontSize='small' />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <Box display='flex' justifyContent='center'>
+            <Pagination count={10} color='primary' />
+          </Box>
+        </>
       ) : (
         'Loading'
       )}
