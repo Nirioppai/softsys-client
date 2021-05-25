@@ -1,0 +1,382 @@
+[
+  {
+    "_id": "0",
+    "employeeId": "797595223-0",
+    "firstName": "Cullie",
+    "middleName": "Eichmann",
+    "lastName": "Whibley",
+    "suffix": "IV",
+    "gender": "Female",
+    "birthDate": {
+      "year": 1998,
+      "month": 10,
+      "date": 3
+    },
+    "nationality": "Bangladeshi",
+    "contactNumber": "2859292001",
+    "email": "cwhibley0@wikia.com",
+    "address": "9380 Westport Pass",
+    "position": "Teacher"
+  },
+  {
+    "_id": "1",
+    "employeeId": "879041472-1",
+    "firstName": "Bink",
+    "middleName": "Dugdale",
+    "lastName": "Mortimer",
+    "suffix": null,
+    "gender": "Male",
+    "birthDate": {
+      "year": 1989,
+      "month": 12,
+      "date": 17
+    },
+    "nationality": "Native Hawaiian and Other Pacific Islander (NHPI)",
+    "contactNumber": "7323053872",
+    "email": "bmortimer1@a8.net",
+    "address": "272 Garrison Hill",
+    "position": "Food Chemist"
+  },
+  {
+    "_id": "2",
+    "employeeId": "172344468-5",
+    "firstName": "Gaylord",
+    "middleName": "Malpas",
+    "lastName": "Corradetti",
+    "suffix": null,
+    "gender": "Male",
+    "birthDate": {
+      "year": 1992,
+      "month": 4,
+      "date": 17
+    },
+    "nationality": "Yuman",
+    "contactNumber": "4215135764",
+    "email": "gcorradetti2@people.com.cn",
+    "address": "7563 Parkside Parkway",
+    "position": "Analyst Programmer"
+  },
+  {
+    "_id": "3",
+    "employeeId": "445286045-1",
+    "firstName": "Laurence",
+    "middleName": "Matusovsky",
+    "lastName": "Skoggins",
+    "suffix": "Jr.",
+    "gender": "Female",
+    "birthDate": {
+      "year": 2005,
+      "month": 8,
+      "date": 7
+    },
+    "nationality": "Taiwanese",
+    "contactNumber": "9464875812",
+    "email": "lskoggins3@instagram.com",
+    "address": "02 Comanche Terrace",
+    "position": "Chemical Engineer"
+  },
+  {
+    "_id": "4",
+    "employeeId": "794303901-7",
+    "firstName": "Bella",
+    "middleName": "Bedbury",
+    "lastName": "Alben",
+    "suffix": null,
+    "gender": "Male",
+    "birthDate": {
+      "year": 2012,
+      "month": 12,
+      "date": 6
+    },
+    "nationality": "Paraguayan",
+    "contactNumber": "7047767638",
+    "email": "balben4@indiatimes.com",
+    "address": "1707 Debs Junction",
+    "position": "Account Coordinator"
+  },
+  {
+    "_id": "5",
+    "employeeId": "272570835-4",
+    "firstName": "Yvor",
+    "middleName": "Kobus",
+    "lastName": "Georgiev",
+    "suffix": "II",
+    "gender": "Male",
+    "birthDate": {
+      "year": 2004,
+      "month": 8,
+      "date": 3
+    },
+    "nationality": "Pima",
+    "contactNumber": "4444766328",
+    "email": "ygeorgiev5@woothemes.com",
+    "address": "2 Dakota Park",
+    "position": "Software Engineer III"
+  },
+  {
+    "_id": "6",
+    "employeeId": "515863689-3",
+    "firstName": "Rodie",
+    "middleName": "Halling",
+    "lastName": "Roddie",
+    "suffix": "Sr.",
+    "gender": "Male",
+    "birthDate": {
+      "year": 1998,
+      "month": 5,
+      "date": 26
+    },
+    "nationality": "Blackfeet",
+    "contactNumber": "6057870404",
+    "email": "rroddie6@shareasale.com",
+    "address": "955 Sundown Alley",
+    "position": "Account Representative IV"
+  },
+  {
+    "_id": "7",
+    "employeeId": "008050786-7",
+    "firstName": "Alma",
+    "middleName": "Klas",
+    "lastName": "Strang",
+    "suffix": "Jr.",
+    "gender": "Male",
+    "birthDate": {
+      "year": 1999,
+      "month": 10,
+      "date": 27
+    },
+    "nationality": "Tohono O'Odham",
+    "contactNumber": "5946454114",
+    "email": "astrang7@printfriendly.com",
+    "address": "19 Del Mar Street",
+    "position": "Administrative Officer"
+  },
+  {
+    "_id": "8",
+    "employeeId": "024944327-9",
+    "firstName": "Anatola",
+    "middleName": "Ebertz",
+    "lastName": "Reboulet",
+    "suffix": null,
+    "gender": "Female",
+    "birthDate": {
+      "year": 1997,
+      "month": 11,
+      "date": 6
+    },
+    "nationality": "Alaska Native",
+    "contactNumber": "2851333305",
+    "email": "areboulet8@mail.ru",
+    "address": "863 Fordem Pass",
+    "position": "Teacher"
+  },
+  {
+    "_id": "9",
+    "employeeId": "385341885-6",
+    "firstName": "Roderick",
+    "middleName": "McNutt",
+    "lastName": "McIlwraith",
+    "suffix": "IV",
+    "gender": "Female",
+    "birthDate": {
+      "year": 1997,
+      "month": 9,
+      "date": 22
+    },
+    "nationality": "Pima",
+    "contactNumber": "6815527546",
+    "email": "rmcilwraith9@census.gov",
+    "address": "46549 Kedzie Park",
+    "position": "Product Engineer"
+  },
+  {
+    "_id": "10",
+    "employeeId": "855567030-6",
+    "firstName": "Mallorie",
+    "middleName": "Franciotti",
+    "lastName": "Maitland",
+    "suffix": null,
+    "gender": "Male",
+    "birthDate": {
+      "year": 1997,
+      "month": 11,
+      "date": 1
+    },
+    "nationality": "Creek",
+    "contactNumber": "1688904266",
+    "email": "mmaitlanda@arizona.edu",
+    "address": "75223 Monterey Park",
+    "position": "Health Coach II"
+  },
+  {
+    "_id": "11",
+    "employeeId": "839851593-7",
+    "firstName": "Araldo",
+    "middleName": "Runge",
+    "lastName": "Pratten",
+    "suffix": null,
+    "gender": "Male",
+    "birthDate": {
+      "year": 2002,
+      "month": 11,
+      "date": 28
+    },
+    "nationality": "Apache",
+    "contactNumber": "2474830254",
+    "email": "aprattenb@baidu.com",
+    "address": "52 Springview Pass",
+    "position": "Marketing Manager"
+  },
+  {
+    "_id": "12",
+    "employeeId": "479221295-2",
+    "firstName": "Rayna",
+    "middleName": "Febry",
+    "lastName": "Gingel",
+    "suffix": null,
+    "gender": "Female",
+    "birthDate": {
+      "year": 2006,
+      "month": 10,
+      "date": 24
+    },
+    "nationality": "Yakama",
+    "contactNumber": "4342150364",
+    "email": "rgingelc@hc360.com",
+    "address": "75456 Elmside Hill",
+    "position": "Sales Representative"
+  },
+  {
+    "_id": "13",
+    "employeeId": "669899529-0",
+    "firstName": "Donni",
+    "middleName": "Downage",
+    "lastName": "Legges",
+    "suffix": null,
+    "gender": "Male",
+    "birthDate": {
+      "year": 2004,
+      "month": 8,
+      "date": 2
+    },
+    "nationality": "Mexican",
+    "contactNumber": "8253814854",
+    "email": "dleggesd@t-online.de",
+    "address": "85634 Gina Park",
+    "position": "Operator"
+  },
+  {
+    "_id": "14",
+    "employeeId": "198506658-0",
+    "firstName": "Courtnay",
+    "middleName": "Brazenor",
+    "lastName": "Forber",
+    "suffix": "II",
+    "gender": "Male",
+    "birthDate": {
+      "year": 2013,
+      "month": 12,
+      "date": 24
+    },
+    "nationality": "Sri Lankan",
+    "contactNumber": "6826981331",
+    "email": "cforbere@prnewswire.com",
+    "address": "511 Hollow Ridge Alley",
+    "position": "Nuclear Power Engineer"
+  },
+  {
+    "_id": "15",
+    "employeeId": "828947559-4",
+    "firstName": "Anselm",
+    "middleName": "Isacoff",
+    "lastName": "Fresson",
+    "suffix": null,
+    "gender": "Male",
+    "birthDate": {
+      "year": 1999,
+      "month": 11,
+      "date": 4
+    },
+    "nationality": "Paraguayan",
+    "contactNumber": "2262128979",
+    "email": "afressonf@mysql.com",
+    "address": "3199 Del Sol Place",
+    "position": "VP Quality Control"
+  },
+  {
+    "_id": "16",
+    "employeeId": "949309866-4",
+    "firstName": "Alvie",
+    "middleName": "Guisby",
+    "lastName": "Clowsley",
+    "suffix": null,
+    "gender": "Female",
+    "birthDate": {
+      "year": 2004,
+      "month": 1,
+      "date": 14
+    },
+    "nationality": "South American",
+    "contactNumber": "6587797199",
+    "email": "aclowsleyg@addtoany.com",
+    "address": "06389 Mccormick Park",
+    "position": "Web Designer I"
+  },
+  {
+    "_id": "17",
+    "employeeId": "089647534-4",
+    "firstName": "Guthrey",
+    "middleName": "MacCarroll",
+    "lastName": "Pawnsford",
+    "suffix": "Jr.",
+    "gender": "Female",
+    "birthDate": {
+      "year": 2006,
+      "month": 9,
+      "date": 11
+    },
+    "nationality": "Yakama",
+    "contactNumber": "8594716003",
+    "email": "gpawnsfordh@hostgator.com",
+    "address": "346 Lighthouse Bay Junction",
+    "position": "Staff Scientist"
+  },
+  {
+    "_id": "18",
+    "employeeId": "208492878-8",
+    "firstName": "Maisey",
+    "middleName": "Yurchishin",
+    "lastName": "Ranyell",
+    "suffix": "IV",
+    "gender": "Male",
+    "birthDate": {
+      "year": 1991,
+      "month": 11,
+      "date": 7
+    },
+    "nationality": "Native Hawaiian",
+    "contactNumber": "2424657172",
+    "email": "mranyelli@ed.gov",
+    "address": "41 Banding Park",
+    "position": "Information Systems Manager"
+  },
+  {
+    "_id": "19",
+    "employeeId": "491564023-X",
+    "firstName": "Jewel",
+    "middleName": "Berndsen",
+    "lastName": "Gentile",
+    "suffix": "IV",
+    "gender": "Male",
+    "birthDate": {
+      "year": 1994,
+      "month": 2,
+      "date": 20
+    },
+    "nationality": "Peruvian",
+    "contactNumber": "2633744029",
+    "email": "jgentilej@jimdo.com",
+    "address": "26117 Summit Alley",
+    "position": "Environmental Specialist"
+  }
+]
