@@ -5,7 +5,17 @@ import { ThemeProvider, CssBaseline } from '@material-ui/core';
 import { theme } from './theme';
 
 // Pages
-import { Applicants, Employees, Home, Portal, Login, NotFound } from './pages';
+import {
+  Portal,
+  Login,
+  Home,
+  Applicants,
+  Employees,
+  OrganizationalChart,
+  Requests,
+  Attendance,
+  NotFound,
+} from './pages';
 
 function App() {
   return (
@@ -28,6 +38,13 @@ function App() {
             {/* Admin */}
             <Route exact path='/applicants' component={Applicants} />
             <Route exact path='/employees' component={Employees} />
+            <Route
+              exact
+              path='/organizational-chart'
+              component={OrganizationalChart}
+            />
+            <Route exact path='/requests' component={Requests} />
+            <Route exact path='/attendance' component={Attendance} />
 
             {/* Misc */}
             <Route path='*' component={NotFound} />
