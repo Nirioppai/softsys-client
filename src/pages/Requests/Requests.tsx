@@ -1,17 +1,17 @@
 import React, { FC } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Typography } from '@material-ui/core';
-import { MainLayout } from '../../components';
+import { AdminWrapper } from '../../components';
 
 const Requests: FC = () => {
   return (
-    <MainLayout>
+    <AdminWrapper>
       <Helmet title='Requests' />
       <Typography variant='h1' gutterBottom>
         Requests
       </Typography>
       <Typography>Under construction</Typography>
-    </MainLayout>
+    </AdminWrapper>
   );
 };
 

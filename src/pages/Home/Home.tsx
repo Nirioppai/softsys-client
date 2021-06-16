@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Typography, Grid, Paper, ButtonBase } from '@material-ui/core';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
-import { MainLayout } from '../../components';
+import { AdminWrapper } from '../../components';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -68,7 +68,7 @@ const Home = () => {
   const classes = useStyles();
 
   return (
-    <MainLayout>
+    <AdminWrapper>
       <Typography variant='h1' gutterBottom>
         Hello, John
       </Typography>
@@ -98,7 +98,7 @@ const Home = () => {
           </Grid>
         ))}
       </Grid>
-    </MainLayout>
+    </AdminWrapper>
   );
 };
 

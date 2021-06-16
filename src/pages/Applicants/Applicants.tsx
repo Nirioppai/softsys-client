@@ -14,7 +14,7 @@ import {
   TablePagination,
 } from '@material-ui/core';
 import { Pencil as PencilIcon, Delete as DeleteIcon } from 'mdi-material-ui';
-import { MainLayout } from '../../components';
+import { AdminWrapper } from '../../components';
 import { getApplicants } from '../../services';
 import { ApplicantTypes } from '../../types';
 import { formatName } from '../../utils';
@@ -31,7 +31,7 @@ const Applicants: FC = () => {
   }, []);
 
   return (
-    <MainLayout>
+    <AdminWrapper>
       <Helmet title='Applicants' />
       <Typography variant='h1' gutterBottom>
         Applicants
@@ -104,7 +104,7 @@ const Applicants: FC = () => {
       ) : (
         'Loading'
       )}
-    </MainLayout>
+    </AdminWrapper>
   );
 };
 
