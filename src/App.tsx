@@ -7,7 +7,7 @@ import { theme } from './theme';
 // Pages
 import {
   Portal,
-  Login,
+  AdminLogin,
   Home,
   Applicants,
   Employees,
@@ -30,7 +30,7 @@ function App() {
           <Switch>
             {/* Auth */}
             <Route exact path='/' component={Portal} />
-            <Route exact path='/login' component={Login} />
+            <Route exact path='/admin/login' component={AdminLogin} />
 
             {/* Home */}
             <Route exact path='/home' component={Home} />
