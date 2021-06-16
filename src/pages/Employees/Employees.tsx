@@ -13,7 +13,7 @@ import {
   TablePagination,
 } from '@material-ui/core';
 import { Pencil as PencilIcon, Delete as DeleteIcon } from 'mdi-material-ui';
-import { MainLayout } from '../../components';
+import { AdminWrapper } from '../../components';
 import { getEmployees } from '../../services';
 import { EmployeeTypes } from '../../types';
 import { formatName } from '../../utils';
@@ -30,7 +30,7 @@ const Employees: FC = () => {
   }, []);
 
   return (
-    <MainLayout>
+    <AdminWrapper>
       <Helmet title='Employees' />
       <Typography variant='h1' gutterBottom>
         Employees
@@ -92,7 +92,7 @@ const Employees: FC = () => {
       ) : (
         'Loading'
       )}
-    </MainLayout>
+    </AdminWrapper>
   );
 };
 
