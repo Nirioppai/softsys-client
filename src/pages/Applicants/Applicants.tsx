@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import { Helmet } from 'react-helmet-async';
 import {
@@ -14,10 +14,10 @@ import {
   TablePagination,
 } from '@material-ui/core';
 import { Pencil as PencilIcon, Delete as DeleteIcon } from 'mdi-material-ui';
-import { AdminWrapper } from '../../components';
-import { getApplicants } from '../../services';
-import { ApplicantTypes } from '../../types';
-import { formatName } from '../../utils';
+import { AdminWrapper } from 'components';
+import { getApplicants } from 'services';
+import { ApplicantTypes } from 'types';
+import { formatName } from 'utils';
 
 const Applicants: FC = () => {
   const [applicants, setApplicants] = useState<ApplicantTypes[]>([]);

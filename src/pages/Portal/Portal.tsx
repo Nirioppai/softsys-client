@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Typography, Button } from '@material-ui/core';
-import { LoginBase } from '../../components';
+import { LoginBase } from 'components';
 
 // These are routed to `/login` for now.
 // If will be implemented in actual, it would be something like `/employee/login`.

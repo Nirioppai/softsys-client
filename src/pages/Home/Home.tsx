@@ -1,8 +1,8 @@
-import React from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Typography, Grid, Paper, ButtonBase } from '@material-ui/core';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
-import { AdminWrapper } from '../../components';
+import { AdminWrapper } from 'components';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -64,7 +64,7 @@ const items = [
   },
 ];
 
-const Home = () => {
+const Home: FC = () => {
   const classes = useStyles();
 
   return (

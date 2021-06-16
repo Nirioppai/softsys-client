@@ -1,7 +1,7 @@
 import React from 'react';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
-import { ProtectedAdminRoute } from './routes';
+import { ProtectedAdminRoute } from 'routes';
 import { ThemeProvider, CssBaseline } from '@material-ui/core';
 import { theme } from './theme';
 
@@ -16,7 +16,7 @@ import {
   Requests,
   Attendance,
   NotFound,
-} from './pages';
+} from 'pages';
 
 function App() {
   return (
