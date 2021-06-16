@@ -7,6 +7,10 @@ import { LoginBase } from '../../components';
 // If will be implemented in actual, it would be something like `/employee/login`.
 const userTypes = [
   {
+    label: 'Applicant',
+    link: '/login',
+  },
+  {
     label: 'Employee',
     link: '/login',
   },
