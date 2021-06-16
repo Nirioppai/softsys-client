@@ -9,9 +9,11 @@ import {
 } from '@material-ui/core';
 import { useMainLayoutStyles } from './useMainLayoutStyles';
 import { BrandContent } from './BrandContent';
-import { drawerListGroups } from './drawerListGroups';
+import { DrawerListGroupsOptions } from '../../types';
 
-export const DrawerLayout: FC = () => {
+export const DrawerLayout: FC<{
+  drawerListGroups: DrawerListGroupsOptions[];
+}> = ({ drawerListGroups }) => {
   const classes = useMainLayoutStyles();
 
   return (

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import {
   Home as HomeIcon,
   AccountMultiplePlus as AccountMultiplePlusIcon,
@@ -7,22 +7,9 @@ import {
   CalendarAlert as CalendarAlertIcon,
   CalendarAccount as CalendarAccountIcon,
 } from 'mdi-material-ui';
+import { DrawerListGroupsOptions } from '../../types';
 
-interface drawerListGroupsOptions {
-  name: string;
-  items: {
-    name: string;
-    icon: ReactNode;
-    link?: string;
-    items?: {
-      name: string;
-      icon: ReactNode;
-      link: string;
-    }[];
-  }[];
-}
-
-export const drawerListGroups: drawerListGroupsOptions[] = [
+export const adminDrawerListGroups: DrawerListGroupsOptions[] = [
   {
     name: 'Home',
     items: [

@@ -14,13 +14,20 @@ import { Menu as MenuIcon } from 'mdi-material-ui';
 import { useMainLayoutStyles } from './useMainLayoutStyles';
 import { ToolbarContent } from './ToolbarContent';
 import { DrawerLayout } from './DrawerLayout';
+import { DrawerListGroupsOptions } from '../../types';
 
 interface MainLayoutProps {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
+  drawerListGroups: DrawerListGroupsOptions[];
 }
 
-const MainLayout: FC<MainLayoutProps> = ({ children, className, ...rest }) => {
+const MainLayout: FC<MainLayoutProps> = ({
+  children,
+  className,
+  drawerListGroups,
+  ...rest
+}) => {
   const classes = useMainLayoutStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -61,7 +68,7 @@ const MainLayout: FC<MainLayoutProps> = ({ children, className, ...rest }) => {
               keepMounted: true,
             }}
           >
-            <DrawerLayout />
+            <DrawerLayout drawerListGroups={drawerListGroups} />
           </Drawer>
         </Hidden>
         <Hidden mdDown>
@@ -72,7 +79,7 @@ const MainLayout: FC<MainLayoutProps> = ({ children, className, ...rest }) => {
             variant='permanent'
             open
           >
-            <DrawerLayout />
+            <DrawerLayout drawerListGroups={drawerListGroups} />
           </Drawer>
         </Hidden>
       </nav>
