@@ -8,13 +8,13 @@ import {
   Link,
 } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
-import { LoginBase } from '../../components';
+import { LoginBase } from 'components';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { TextField } from 'formik-material-ui';
 import { Eye as EyeIcon, EyeOff as EyeOffIcon } from 'mdi-material-ui';
-import { loginAdmin } from '../../services';
-import { AdminLoginTypes } from '../../types';
+import { loginAdmin } from 'services';
+import { AdminLoginTypes } from 'types';
 
 const adminLoginSchema = Yup.object().shape({
   adminId: Yup.string().required('Required'),

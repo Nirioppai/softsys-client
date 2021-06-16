@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import {
   Typography,
@@ -13,10 +13,10 @@ import {
   TablePagination,
 } from '@material-ui/core';
 import { Pencil as PencilIcon, Delete as DeleteIcon } from 'mdi-material-ui';
-import { AdminWrapper } from '../../components';
-import { getEmployees } from '../../services';
-import { EmployeeTypes } from '../../types';
-import { formatName } from '../../utils';
+import { AdminWrapper } from 'components';
+import { getEmployees } from 'services';
+import { EmployeeTypes } from 'types';
+import { formatName } from 'utils';
 
 const Employees: FC = () => {
   const [employees, setEmployees] = useState<EmployeeTypes[]>([]);
