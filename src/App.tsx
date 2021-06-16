@@ -1,6 +1,7 @@
 import React from 'react';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import { ProtectedAdminRoute } from './routes';
 import { ThemeProvider, CssBaseline } from '@material-ui/core';
 import { theme } from './theme';
 
@@ -32,19 +33,29 @@ function App() {
             <Route exact path='/' component={Portal} />
             <Route exact path='/admin/login' component={AdminLogin} />
 
-            {/* Home */}
-            <Route exact path='/home' component={Home} />
-
             {/* Admin */}
-            <Route exact path='/applicants' component={Applicants} />
-            <Route exact path='/employees' component={Employees} />
-            <Route
+            <ProtectedAdminRoute exact path='/home' component={Home} />
+            <ProtectedAdminRoute
+              exact
+              path='/applicants'
+              component={Applicants}
+            />
+            <ProtectedAdminRoute
+              exact
+              path='/employees'
+              component={Employees}
+            />
+            <ProtectedAdminRoute
               exact
               path='/organizational-chart'
               component={OrganizationalChart}
             />
-            <Route exact path='/requests' component={Requests} />
-            <Route exact path='/attendance' component={Attendance} />
+            <ProtectedAdminRoute exact path='/requests' component={Requests} />
+            <ProtectedAdminRoute
+              exact
+              path='/attendance'
+              component={Attendance}
+            />
 
             {/* Misc */}
             <Route path='*' component={NotFound} />
