@@ -13,10 +13,7 @@ import {
   IconButton,
   TablePagination,
 } from '@material-ui/core';
-import {
-  Information as InformationIcon,
-  DotsVertical as DotsVerticalIcon,
-} from 'mdi-material-ui';
+import { Pencil as PencilIcon, Delete as DeleteIcon } from 'mdi-material-ui';
 import { MainLayout } from '../../components';
 import { getApplicants } from '../../services';
 import { ApplicantTypes } from '../../types';
@@ -76,12 +73,17 @@ const Applicants: FC = () => {
                     <TableCell align='right'>
                       <IconButton
                         size='small'
+                        aria-label='edit applicant'
                         style={{ marginRight: '0.25rem' }}
                       >
-                        <InformationIcon fontSize='small' />
+                        <PencilIcon fontSize='small' />
                       </IconButton>
-                      <IconButton size='small' edge='end'>
-                        <DotsVerticalIcon fontSize='small' />
+                      <IconButton
+                        size='small'
+                        edge='end'
+                        aria-label='delete applicant'
+                      >
+                        <DeleteIcon fontSize='small' />
                       </IconButton>
                     </TableCell>
                   </TableRow>
