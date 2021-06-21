@@ -18,6 +18,7 @@ import { AdminWrapper } from 'components';
 import { getApplicants } from 'services';
 import { ApplicantTypes } from 'types';
 import { formatName } from 'utils';
+import AddApplicant from 'components/AddModals/AddApplicant';
 
 const Applicants: FC = () => {
   const [applicants, setApplicants] = useState<ApplicantTypes[]>([]);
@@ -33,8 +34,9 @@ const Applicants: FC = () => {
   return (
     <AdminWrapper>
       <Helmet title='Applicants' />
-      <Typography variant='h1' gutterBottom>
+      <Typography variant='h1' gutterBottom style={{display:"flex", justifyContent:"space-between"}}>
         Applicants
+        <AddApplicant />
       </Typography>
       {isLoaded ? (
         <Paper style={{ marginBottom: '1.5rem' }}>

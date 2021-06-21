@@ -17,6 +17,7 @@ import { AdminWrapper } from 'components';
 import { getEmployees } from 'services';
 import { EmployeeTypes } from 'types';
 import { formatName } from 'utils';
+import AddEmployee from 'components/AddModals/AddEmployee';
 
 const Employees: FC = () => {
   const [employees, setEmployees] = useState<EmployeeTypes[]>([]);
@@ -32,8 +33,9 @@ const Employees: FC = () => {
   return (
     <AdminWrapper>
       <Helmet title='Employees' />
-      <Typography variant='h1' gutterBottom>
+      <Typography variant='h1' gutterBottom style={{display:"flex", justifyContent:"space-between"}}>
         Employees
+        <AddEmployee />
       </Typography>
       {isLoaded ? (
         <Paper style={{ marginBottom: '1.5rem' }}>
