@@ -6,6 +6,8 @@ import {
   Sitemap as SitemapIcon,
   CalendarAlert as CalendarAlertIcon,
   CalendarAccount as CalendarAccountIcon,
+  CalendarMonth as CalendarMonthIcon,
+  AccountCheck as AccountCheckIcon,
 } from 'mdi-material-ui';
 import { DrawerListGroupsOptions } from '../../types';
 
@@ -44,9 +46,19 @@ export const adminDrawerListGroups: DrawerListGroupsOptions[] = [
         link: '/requests',
       },
       {
-        name: 'Attendance',
+        name: 'Attendance Dashboard',
         icon: <CalendarAccountIcon />,
-        link: '/attendance',
+        link: '/attendance/dashboard',
+      },
+      {
+        name: 'Attendance Overview',
+        icon: <AccountCheckIcon />,
+        link: '/attendance/overview',
+      },
+      {
+        name: 'Daily Management',
+        icon: <CalendarMonthIcon />,
+        link: '/attendance/daily-management',
       },
     ],
   },

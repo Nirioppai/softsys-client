@@ -14,7 +14,9 @@ import {
   Employees,
   OrganizationalChart,
   Requests,
-  Attendance,
+  AttendanceDashboard,
+  AttendanceOverview,
+  DailyManagement,
   NotFound,
 } from 'pages';
 
@@ -53,9 +55,20 @@ function App() {
             <ProtectedAdminRoute exact path='/requests' component={Requests} />
             <ProtectedAdminRoute
               exact
-              path='/attendance'
-              component={Attendance}
+              path='/attendance/dashboard'
+              component={AttendanceDashboard}
             />
+            <ProtectedAdminRoute
+              exact
+              path='/attendance/daily-management'
+              component={DailyManagement}
+            />
+            <ProtectedAdminRoute
+              exact
+              path='/attendance/overview'
+              component={AttendanceOverview}
+            />
+
 
             {/* Misc */}
             <Route path='*' component={NotFound} />
