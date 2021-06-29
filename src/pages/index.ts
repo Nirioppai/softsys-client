@@ -6,4 +6,4 @@ export { default as NotFound } from './NotFound';
 export { default as OrganizationalChart } from './OrganizationalChart';
 export { default as Portal } from './Portal';
 export { default as Requests } from './Requests';
-export { AttendanceDashboard, DailyManagement, AttendanceOverview } from './Attendance';
+export { AttendanceDashboard, DailyManagement, AttendanceOverview, DailyAttendance } from './Attendance';

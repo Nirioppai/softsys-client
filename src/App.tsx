@@ -18,6 +18,7 @@ import {
   AttendanceOverview,
   DailyManagement,
   NotFound,
+  DailyAttendance,
 } from 'pages';
 
 function App() {
@@ -67,6 +68,11 @@ function App() {
               exact
               path='/attendance/overview'
               component={AttendanceOverview}
+            />
+             <ProtectedAdminRoute
+              exact
+              path='/attendance/daily-attendance'
+              component={DailyAttendance}
             />
 
 
