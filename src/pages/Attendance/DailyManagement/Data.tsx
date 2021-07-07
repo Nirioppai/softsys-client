@@ -10,7 +10,8 @@ type Data = {
   unit: string;
   status: string;
   validation: boolean;
-  view: React.ReactNode;
+  timeIn: string;
+  timeOut: string;
 };
 
 const randomId = ():string =>{
@@ -72,12 +73,13 @@ const createArr = (n: number): Data[] => {
       unit: randomUnit(),
       status: randomStatus(),
       validation: randomValidation(),
-      view: <button>View</button>
+      timeIn: '08:00',
+      timeOut: '17:00'
     });
   }
   return data;
 };
-export const data = createArr(10);
+export const data = createArr(100);
 export const columns = [
    {
       Header: "ID",
