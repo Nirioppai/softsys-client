@@ -1,0 +1,429 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20210705.124609.9656.0.001.json",
+    "dumpEventTime": "2021-07-05T12:46:09Z",
+    "dumpEventTimeStamp": "1625460369800",
+    "processId": 9656,
+    "cwd": "C:\\Users\\Ervic John Vesencio\\Desktop\\HRIS\\softsys-client",
+    "commandLine": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--max-old-space-size=2048",
+      "C:\\Users\\Ervic John Vesencio\\Desktop\\HRIS\\softsys-client\\node_modules\\fork-ts-checker-webpack-plugin\\lib\\service.js"
+    ],
+    "nodejsVersion": "v12.14.1",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.14.1",
+      "v8": "7.7.299.13-node.16",
+      "uv": "1.33.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "2.0.1",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.14.1/node-v12.14.1-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.14.1/node-v12.14.1.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.14.1/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.19042",
+    "osVersion": "Windows 10 Home",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "AMD A12-9720P RADEON R7, 12 COMPUTE CORES 4C+8G",
+        "speed": 2695,
+        "user": 1974484,
+        "nice": 0,
+        "sys": 2837640,
+        "idle": 7106375,
+        "irq": 117984
+      },
+      {
+        "model": "AMD A12-9720P RADEON R7, 12 COMPUTE CORES 4C+8G",
+        "speed": 2695,
+        "user": 2108031,
+        "nice": 0,
+        "sys": 2839968,
+        "idle": 6970296,
+        "irq": 40500
+      },
+      {
+        "model": "AMD A12-9720P RADEON R7, 12 COMPUTE CORES 4C+8G",
+        "speed": 2695,
+        "user": 2179453,
+        "nice": 0,
+        "sys": 2649656,
+        "idle": 7089187,
+        "irq": 24640
+      },
+      {
+        "model": "AMD A12-9720P RADEON R7, 12 COMPUTE CORES 4C+8G",
+        "speed": 2695,
+        "user": 2303656,
+        "nice": 0,
+        "sys": 2646171,
+        "idle": 6968468,
+        "irq": 27437
+      }
+    ],
+    "host": "LAPTOP-17B9Q27E"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff63c601759",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff63c605b7c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff63c604b38",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff63c6f433b",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff63cef8c5e",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff63cee0ca1",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff63cdae56c",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff63cd8a563",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff63cd8885b",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff63cdb3edd",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff63cdb5be4",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff63cdabcd3",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff63cdaa4a4",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff63cdcb775",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff63cb378d7",
+      "symbol": ""
+    },
+    {
+      "pc": "0x00007ff63d32463d",
+      "symbol": ""
+    },
+    {
+      "pc": "0x000000ae0aea5293",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 506257408,
+    "totalCommittedMemory": 506257408,
+    "usedMemory": 336262448,
+    "availableMemory": 1710363616,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 262144,
+        "capacity": 261872,
+        "used": 32296,
+        "available": 229576
+      },
+      "new_space": {
+        "memorySize": 16777216,
+        "committedMemory": 16777216,
+        "capacity": 8379904,
+        "used": 432056,
+        "available": 7947848
+      },
+      "old_space": {
+        "memorySize": 427667456,
+        "committedMemory": 427667456,
+        "capacity": 277614784,
+        "used": 277463536,
+        "available": 151248
+      },
+      "code_space": {
+        "memorySize": 4882432,
+        "committedMemory": 4882432,
+        "capacity": 2347680,
+        "used": 2347680,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 790528,
+        "committedMemory": 790528,
+        "capacity": 603040,
+        "used": 603040,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 55828480,
+        "committedMemory": 55828480,
+        "capacity": 55380288,
+        "used": 55380288,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 49152,
+        "committedMemory": 49152,
+        "capacity": 3552,
+        "used": 3552,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 8379904,
+        "used": 0,
+        "available": 8379904
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 594.109,
+    "kernelCpuSeconds": 5573.83,
+    "cpuConsumptionPercent": 265.516,
+    "maxRss": 641765376,
+    "pageFaults": {
+      "IORequired": 420317,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 14046,
+      "writes": 12
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "APPDATA": "C:\\Users\\Ervic John Vesencio\\AppData\\Roaming",
+    "BABEL_ENV": "development",
+    "CHECK_SYNTACTIC_ERRORS": "true",
+    "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_2956_UNUBDYKTPSOYMZFT",
+    "COLORTERM": "truecolor",
+    "CommonProgramFiles": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPILER_OPTIONS": "{}",
+    "COMPUTERNAME": "LAPTOP-17B9Q27E",
+    "ComSpec": "C:\\WINDOWS\\system32\\cmd.exe",
+    "CONTEXT": "C:\\Users\\Ervic John Vesencio\\Desktop\\HRIS\\softsys-client",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "DXSDK_DIR": "C:\\Program Files (x86)\\Microsoft DirectX SDK (June 2010)\\",
+    "ESLINT": "false",
+    "ESLINT_OPTIONS": "{}",
+    "FPS_BROWSER_APP_PROFILE_STRING": "Internet Explorer",
+    "FPS_BROWSER_USER_PROFILE_STRING": "Default",
+    "GIT_ASKPASS": "c:\\Users\\Ervic John Vesencio\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\Ervic John Vesencio",
+    "INIT_CWD": "C:\\Users\\Ervic John Vesencio\\Desktop\\HRIS\\softsys-client",
+    "LANG": "en_US.UTF-8",
+    "LOCALAPPDATA": "C:\\Users\\Ervic John Vesencio\\AppData\\Local",
+    "LOGONSERVER": "\\\\LAPTOP-17B9Q27E",
+    "MEMORY_LIMIT": "2048",
+    "NODE": "C:\\Program Files\\nodejs\\node.exe",
+    "NODE_ENV": "development",
+    "NODE_PATH": "",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"start\"],\"original\":[\"start\"]}",
+    "npm_config_bin_links": "true",
+    "npm_config_https___node_bit_dev": "",
+    "npm_config_ignore_optional": "",
+    "npm_config_ignore_scripts": "",
+    "npm_config_init_license": "MIT",
+    "npm_config_init_version": "1.0.0",
+    "npm_config_registry": "https://registry.yarnpkg.com",
+    "npm_config_save_prefix": "^",
+    "npm_config_strict_ssl": "true",
+    "npm_config_user_agent": "yarn/1.22.5 npm/? node/v12.14.1 win32 x64",
+    "npm_config_version_commit_hooks": "true",
+    "npm_config_version_git_message": "v%s",
+    "npm_config_version_git_sign": "",
+    "npm_config_version_git_tag": "true",
+    "npm_config_version_tag_prefix": "v",
+    "npm_config__bit_registry": "https://node.bit.dev",
+    "npm_execpath": "C:\\Program Files (x86)\\Yarn\\bin\\yarn.js",
+    "npm_lifecycle_event": "start",
+    "npm_lifecycle_script": "react-scripts start",
+    "npm_node_execpath": "C:\\Program Files\\nodejs\\node.exe",
+    "npm_package_browserslist_development_0": "last 1 chrome version",
+    "npm_package_browserslist_development_1": "last 1 firefox version",
+    "npm_package_browserslist_development_2": "last 1 safari version",
+    "npm_package_browserslist_production_0": ">0.2%",
+    "npm_package_browserslist_production_1": "not dead",
+    "npm_package_browserslist_production_2": "not op_mini all",
+    "npm_package_dependencies_axios": "^0.21.1",
+    "npm_package_dependencies_clsx": "^1.1.1",
+    "npm_package_dependencies_date_fns": "^2.21.3",
+    "npm_package_dependencies_formik": "^2.2.9",
+    "npm_package_dependencies_formik_material_ui": "^3.0.1",
+    "npm_package_dependencies_formik_material_ui_lab": "^0.0.8",
+    "npm_package_dependencies_formik_material_ui_pickers": "^0.0.12",
+    "npm_package_dependencies_jwt_decode": "^3.1.2",
+    "npm_package_dependencies_mdi_material_ui": "^6.22.1",
+    "npm_package_dependencies_react": "^17.0.2",
+    "npm_package_dependencies_react_dom": "^17.0.2",
+    "npm_package_dependencies_react_helmet_async": "^1.0.9",
+    "npm_package_dependencies_react_router_dom": "^5.2.0",
+    "npm_package_dependencies_react_scripts": "4.0.3",
+    "npm_package_dependencies_react_table": "^7.7.0",
+    "npm_package_dependencies_typescript": "^4.1.2",
+    "npm_package_dependencies_web_vitals": "^1.0.1",
+    "npm_package_dependencies_yup": "^0.32.9",
+    "npm_package_dependencies__date_io_date_fns": "1.x",
+    "npm_package_dependencies__material_ui_core": "^4.11.4",
+    "npm_package_dependencies__material_ui_lab": "^4.0.0-alpha.58",
+    "npm_package_dependencies__material_ui_pickers": "^3.3.10",
+    "npm_package_dependencies__testing_library_jest_dom": "^5.11.4",
+    "npm_package_dependencies__testing_library_react": "^11.1.0",
+    "npm_package_dependencies__testing_library_user_event": "^12.1.10",
+    "npm_package_dependencies__types_jest": "^26.0.15",
+    "npm_package_dependencies__types_node": "^12.0.0",
+    "npm_package_dependencies__types_react": "^17.0.0",
+    "npm_package_dependencies__types_react_dom": "^17.0.0",
+    "npm_package_dependencies__types_react_router_dom": "^5.1.7",
+    "npm_package_dependencies__types_react_table": "^7.7.1",
+    "npm_package_description": "## Installation",
+    "npm_package_eslintConfig_extends_0": "react-app",
+    "npm_package_eslintConfig_extends_1": "react-app/jest",
+    "npm_package_name": "softsys-client",
+    "npm_package_private": "true",
+    "npm_package_readmeFilename": "README.md",
+    "npm_package_scripts_build": "react-scripts build",
+    "npm_package_scripts_eject": "react-scripts eject",
+    "npm_package_scripts_start": "react-scripts start",
+    "npm_package_scripts_test": "react-scripts test",
+    "npm_package_version": "0.1.0",
+    "NUMBER_OF_PROCESSORS": "4",
+    "NVM_HOME": "C:\\Users\\Ervic John Vesencio\\AppData\\Roaming\\nvm",
+    "NVM_SYMLINK": "C:\\Program Files\\nodejs",
+    "OneDrive": "C:\\Users\\Ervic John Vesencio\\OneDrive",
+    "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
+    "OS": "Windows_NT",
+    "Path": "C:\\Users\\ERVICJ~1\\AppData\\Local\\Temp\\yarn--1625458031310-0.16985328908060615;C:\\Users\\Ervic John Vesencio\\Desktop\\HRIS\\softsys-client\\node_modules\\.bin;C:\\Users\\Ervic John Vesencio\\AppData\\Local\\Yarn\\Data\\link\\node_modules\\.bin;C:\\Program Files\\libexec\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Ervic John Vesencio\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\Yarn\\bin\\;C:\\Users\\Ervic John Vesencio\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Ervic John Vesencio\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Ervic John Vesencio\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Program Files\\JetBrains\\PhpStorm 2019.2.2\\bin;C:\\Users\\Ervic John Vesencio\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Ervic John Vesencio\\AppData\\Roaming\\npm;C:\\Users\\Ervic John Vesencio\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\Ervic John Vesencio\\AppData\\Local\\Yarn\\bin;C:\\Modeltech_pe_edu_10.4a\\win32pe_edu;C:\\Users\\Ervic John Vesencio\\.dotnet\\tools;C:\\Users\\Ervic John Vesencio\\AppData\\Local\\Microsoft\\WindowsApps;",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.CPL",
+    "PhpStorm": "C:\\Program Files\\JetBrains\\PhpStorm 2019.2.2\\bin;",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "AMD64 Family 21 Model 101 Stepping 1, AuthenticAMD",
+    "PROCESSOR_LEVEL": "21",
+    "PROCESSOR_REVISION": "6501",
+    "ProgramData": "C:\\ProgramData",
+    "ProgramFiles": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PROMPT": "$P$G",
+    "PSModulePath": "C:\\Users\\Ervic John Vesencio\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+    "PT8HOME": "C:\\Program Files\\Cisco Packet Tracer 8.0",
+    "PUBLIC": "C:\\Users\\Public",
+    "QT_DEVICE_PIXEL_RATIO": "auto",
+    "REACT_APP_HRIS_URL": "http://localhost:5000",
+    "REACT_APP_MOCK_API_URL": "/json",
+    "SESSIONNAME": "Console",
+    "SystemDrive": "C:",
+    "SystemRoot": "C:\\WINDOWS",
+    "TEMP": "C:\\Users\\ERVICJ~1\\AppData\\Local\\Temp",
+    "TERM_PROGRAM": "vscode",
+    "TERM_PROGRAM_VERSION": "1.57.1",
+    "TMP": "C:\\Users\\ERVICJ~1\\AppData\\Local\\Temp",
+    "TSCONFIG": "C:\\Users\\Ervic John Vesencio\\Desktop\\HRIS\\softsys-client\\tsconfig.json",
+    "TYPESCRIPT_PATH": "C:\\Users\\Ervic John Vesencio\\Desktop\\HRIS\\softsys-client\\node_modules\\typescript\\lib\\typescript.js",
+    "USERDOMAIN": "LAPTOP-17B9Q27E",
+    "USERDOMAIN_ROAMINGPROFILE": "LAPTOP-17B9Q27E",
+    "USERNAME": "Ervic John Vesencio",
+    "USERPROFILE": "C:\\Users\\Ervic John Vesencio",
+    "USE_INCREMENTAL_API": "true",
+    "VSCODE_GIT_ASKPASS_MAIN": "c:\\Users\\Ervic John Vesencio\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js",
+    "VSCODE_GIT_ASKPASS_NODE": "C:\\Users\\Ervic John Vesencio\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+    "VSCODE_GIT_IPC_HANDLE": "\\\\.\\pipe\\vscode-git-c39a436cbf-sock",
+    "VUE": "{\"compiler\":\"vue-template-compiler\",\"enabled\":false}",
+    "WEBPACK_DEV_SERVER": "true",
+    "windir": "C:\\WINDOWS",
+    "YARN_WRAP_OUTPUT": "false"
+  },
+  "sharedObjects": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+    "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+    "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+    "C:\\WINDOWS\\System32\\WS2_32.dll",
+    "C:\\WINDOWS\\System32\\RPCRT4.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\System32\\win32u.dll",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\GDI32.dll",
+    "C:\\WINDOWS\\System32\\gdi32full.dll",
+    "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\PSAPI.DLL",
+    "C:\\WINDOWS\\System32\\CRYPT32.dll",
+    "C:\\WINDOWS\\System32\\bcrypt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
+    "C:\\WINDOWS\\System32\\IMM32.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\powrprof.dll",
+    "C:\\WINDOWS\\SYSTEM32\\UMPDC.dll",
+    "C:\\WINDOWS\\SYSTEM32\\CRYPTBASE.DLL",
+    "C:\\WINDOWS\\system32\\uxtheme.dll",
+    "C:\\WINDOWS\\System32\\combase.dll",
+    "C:\\WINDOWS\\system32\\mswsock.dll",
+    "C:\\WINDOWS\\SYSTEM32\\kernel.appcore.dll",
+    "C:\\WINDOWS\\System32\\bcryptprimitives.dll",
+    "C:\\WINDOWS\\System32\\NSI.dll",
+    "C:\\WINDOWS\\system32\\napinsp.dll",
+    "C:\\WINDOWS\\system32\\pnrpnsp.dll"
+  ]
+}
