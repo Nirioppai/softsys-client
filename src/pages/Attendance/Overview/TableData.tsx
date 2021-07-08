@@ -1,22 +1,37 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import TableRender from './TableRender';
 import { NativeSelect, FormControl } from '@material-ui/core';
+import type { DataType, EmployeeRecord } from './MonthlyData';
+
+//data need
+
+// data about date
 import { dates } from './Dates';
-import { data } from './Data';
-import { janColumn } from './JanColumn';
+
+//data about the data to render
+import { dataToRender } from './MonthlyData';
+
+//data about the columns when rendering
+import { YearColumn } from './MonthlyColumn';
+
 interface Overview {
   month: string;
   monthData: any;
-  currentData: any;
-  currentColumns: any;
+  currentColumn: {
+    Header: string;
+    accessor: any;
+  }[];
+  renderData: EmployeeRecord[];
+  isLoaded: boolean;
 }
 
 export default function TableData() {
   const [state, setState] = useState<Overview>({
     month: '',
     monthData: null,
-    currentData: null,
-    currentColumns: null,
+    currentColumn: [],
+    renderData: [],
+    isLoaded: false,
   });
 
   useEffect(() => {
@@ -24,57 +39,43 @@ export default function TableData() {
     let monthNum = m.getMonth();
     setState((prevState) => ({
       ...prevState,
-      month: dates[monthNum].name,
-      monthData: dates[monthNum],
+      month: dates[0].name,
+      monthData: dates[0],
+      currentColumn: YearColumn.months[0].columns,
+      currentMonth: YearColumn.months[0].name,
+      renderData: dataToRender[0].employeeRecords,
     }));
+
+    //this one should be based on the current month when 1st visited
+    //pero gagawin ko lang munang january para fit sa data na ginawa ko hehe
   }, []);
-  // const columns = React.useMemo(
-  //   () => [
-  //     {
-  //       Header: 'First Name',
-  //       accessor: 'firstName',
-  //     },
-  //     {
-  //       Header: 'Last Name',
-  //       accessor: 'lastName',
-  //     },
-  //   ],
-  //   []
-  // );
 
-  // const data = [
-  //   {
-  //     firstName: 'hatdog',
-  //     lastName: 'digididog',
-  //   },
-  //   {
-  //     firstName: 'shampoo',
-  //     lastName: 'soap',
-  //   },
-  // ];
-  // useEffect(() => {
-  //   let columns = [];
-  //   let obj = {
-  //     Header: '',
-  //     accessor: '',
-  //   };
+  useEffect(() => {
+    setState((prevState) => ({ ...prevState, isLoaded: true }));
+  }, [state.renderData]);
 
-  //   // for (let x = 0; x<=data[0].attendance1.length; x++) {
-  //   //   obj.Header = `${x + 1}`;
-  //   //   obj.accessor = "data[0].attendance"
-  //   // }
-  //   //gawa ng json every month
-
-  // }, [state.month]);
+  useEffect(() => {
+    // state.month !== currentMonth;
+    //every time the user changed the month
+    //it will fetch the needed data in the database already sorted
+    //then just print it in the frontend
+    //assuming that everything was the same with my mockdata
+    // if (state.month !== null || undefined) {
+    //   setState((prevState) => ({
+    //     ...prevState,
+    //     currentColumn: YearColumn.months[state.monthData.number - 1].columns,
+    //     renderData: dataToRender[state.monthData.number - 1],
+    //   }));
+    // }
+  }, [state.month]);
   const handleChange = (e: ChangeEvent<{ value: unknown }>, state: string) => {
     setState((prevState) => ({
       ...prevState,
       [state]: e.target.value,
     }));
-    console.log(e.target.value);
   };
-  const { month } = state;
-  return (
+  const { month, currentColumn, renderData, isLoaded } = state;
+  return isLoaded ? (
     <>
       <FormControl>
         <NativeSelect
@@ -91,7 +92,7 @@ export default function TableData() {
           ))}
         </NativeSelect>
       </FormControl>
-      <TableRender columns={janColumn} data={data} />
+      <TableRender columns={currentColumn} data={renderData} />
     </>
-  );
+  ) : null;
 }
