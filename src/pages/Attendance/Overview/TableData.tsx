@@ -1,6 +1,6 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import TableRender from './TableRender';
-import { NativeSelect, FormControl } from '@material-ui/core';
+import { Select, FormControl, MenuItem } from '@material-ui/core';
 import type { DataType, EmployeeRecord } from './MonthlyData';
 
 //data need
@@ -78,19 +78,19 @@ export default function TableData() {
   return isLoaded ? (
     <>
       <FormControl>
-        <NativeSelect
+        <Select
           value={month}
           onChange={(e) => handleChange(e, 'month')}
           name='age'
           inputProps={{ 'aria-label': 'age' }}
         >
           {dates.map((month) => (
-            <option key={month.short} value={month.name}>
+            <MenuItem key={month.short} value={month.name}>
               {' '}
               {month.name}{' '}
-            </option>
+            </MenuItem>
           ))}
-        </NativeSelect>
+        </Select>
       </FormControl>
       <TableRender columns={currentColumn} data={renderData} />
     </>
