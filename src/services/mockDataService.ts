@@ -19,3 +19,7 @@ export const getRequests = () => {
 export const getRoles = () => {
   return axios.get(`${baseUrl}/roles.json`);
 };
+
+export const getPermissions = () => {
+  return axios.get(`${baseUrl}/permissions.json`);
+};
