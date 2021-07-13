@@ -7,6 +7,7 @@ import { TabPanel, TabList, TabContext } from '@material-ui/lab';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import LocalDropzone from './LocalDropzone';
 import Roles from './Roles';
+import Permissions from './Permissions';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -40,7 +41,7 @@ const StaffManagement: FC = () => {
     },
     {
       name: 'Permissions',
-      component: <LocalDropzone />,
+      component: <Permissions />,
     },
   ];
 
