@@ -16,6 +16,8 @@ import {
   Requests,
   Attendance,
   NotFound,
+  Imports,
+  StaffManagement,
 } from 'pages';
 
 function App() {
@@ -55,6 +57,12 @@ function App() {
               exact
               path='/attendance'
               component={Attendance}
+            />
+            <ProtectedAdminRoute exact path='/imports' component={Imports} />
+            <ProtectedAdminRoute
+              exact
+              path='/staff-management'
+              component={StaffManagement}
             />
 
             {/* Misc */}

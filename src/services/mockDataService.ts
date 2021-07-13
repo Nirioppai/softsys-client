@@ -11,3 +11,11 @@ export const getApplicants = () => {
 export const getEmployees = () => {
   return axios.get(`${baseUrl}/employees.json`);
 };
+
+export const getRequests = () => {
+  return axios.get(`${baseUrl}/requests.json`);
+};
+
+export const getRoles = () => {
+  return axios.get(`${baseUrl}/roles.json`);
+};

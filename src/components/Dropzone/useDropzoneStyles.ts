@@ -1,0 +1,123 @@
+import {
+  makeStyles,
+  createStyles,
+  Theme,
+  fade,
+} from '@material-ui/core/styles';
+
+export const useDropzoneStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      '& .dzu-dropzone': {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100%',
+        margin: '0 auto',
+        position: 'relative',
+        boxSizing: 'border-box',
+        transition: 'all 0.15s',
+        border: `2px dashed ${theme.palette.divider}`,
+        borderRadius: theme.shape.borderRadius,
+        padding: 30,
+      },
+      '& .dzu-dropzoneActive': {
+        backgroundColor: fade(theme.palette.primary.main, 0.025),
+        borderColor: theme.palette.primary.main,
+        '& .dzu-inputLabel': {
+          color: theme.palette.primary.main,
+        },
+      },
+      '& .dzu-dropzoneDisabled': {
+        opacity: 0.5,
+      },
+      '& .dzu-dropzoneDisabled *:hover': {
+        cursor: 'unset',
+      },
+      '& .dzu-input': {
+        display: 'none',
+      },
+      '& .dzu-inputLabel': {
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        alignItems: 'center',
+        fontSize: theme.spacing(2),
+        fontWeight: 500,
+        color: theme.palette.text.secondary,
+        transition: 'color 0.15s',
+        cursor: 'pointer',
+        width: 'calc(100% + 60px)',
+        height: '100%',
+        margin: -30,
+        padding: 30,
+      },
+      '& .dzu-inputLabelWithFiles': {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'flex-start',
+        padding: '0 14px',
+        minHeight: 32,
+        backgroundColor: theme.palette.text.secondary,
+        color: theme.palette.primary.main,
+        border: 'none',
+        borderRadius: 4,
+        fontSize: 14,
+        fontWeight: 500,
+        marginTop: 20,
+        marginLeft: '3%',
+        cursor: 'pointer',
+      },
+      '& .dzu-previewContainer': {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        position: 'relative',
+        width: '100%',
+        minHeight: 60,
+        zIndex: 1,
+        borderBottom: `1px solid ${theme.palette.divider}`,
+        boxSizing: 'border-box',
+      },
+      '& .dzu-previewStatusContainer': {
+        display: 'flex',
+        alignItems: 'center',
+      },
+      '& .dzu-previewFileName': {
+        fontSize: 14,
+        fontWeight: 400,
+        color: theme.palette.text.primary,
+      },
+      '& .dzu-previewImage': {
+        width: 'auto',
+        maxHeight: 40,
+        maxWidth: 140,
+        borderRadius: 4,
+      },
+      '& .dzu-previewButton': {
+        backgroundSize: '14px 14px',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        width: 14,
+        height: 14,
+        cursor: 'pointer',
+        opacity: 0.9,
+        margin: '0 0 2px 10px',
+        color: theme.palette.text.primary,
+      },
+      '& .dzu-submitButtonContainer': {
+        width: '100%',
+        marginTop: 30,
+      },
+      '& .dzu-submitButton': {
+        background: 'none',
+        outline: 'none',
+        border: 'none',
+        padding: 0,
+        float: 'right',
+      },
+    },
+  })
+);

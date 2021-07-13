@@ -62,6 +62,16 @@ const items = [
     image:
       'https://image.freepik.com/free-vector/build-your-program-appointment-booking_23-2148552954.jpg',
   },
+  {
+    label: 'Imports',
+    link: '/imports',
+    image: 'https://i.imgur.com/VjwGb6f.png',
+  },
+  {
+    label: 'Staff Management',
+    link: '/staff-management',
+    image: 'https://i.imgur.com/hLEsF8Y.png',
+  },
 ];
 
 const Home: FC = () => {

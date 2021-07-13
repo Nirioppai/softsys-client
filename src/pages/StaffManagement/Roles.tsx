@@ -1,4 +1,5 @@
 import { FC, useState, useEffect } from 'react';
+import { format } from 'date-fns';
 import { Helmet } from 'react-helmet-async';
 import {
   Typography,
@@ -14,36 +15,31 @@ import {
 } from '@material-ui/core';
 import { Pencil as PencilIcon, Delete as DeleteIcon } from 'mdi-material-ui';
 import { AdminWrapper } from 'components';
-import { getRequests } from 'services';
-import { EmployeeTypes } from 'types';
+import { getRoles } from 'services';
+import { ApplicantTypes } from 'types';
 import { formatName } from 'utils';
 
-const Requests: FC = () => {
-  const [employees, setEmployees] = useState<EmployeeTypes[]>([]);
+const Roles: FC = () => {
+  const [applicants, setApplicants] = useState<ApplicantTypes[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    getRequests()
-      .then((res) => setEmployees(res.data))
+    getRoles()
+      .then((res) => setApplicants(res.data))
       .catch((err) => console.error(err))
       .finally(() => setIsLoaded(true));
   }, []);
 
   return (
-    <AdminWrapper>
-      <Helmet title='Requests' />
-      <Typography variant='h1' gutterBottom>
-        Requests
-      </Typography>
+    <>
       {isLoaded ? (
         <Paper style={{ marginBottom: '1.5rem' }}>
           <TableContainer>
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>Requester Name</TableCell>
-                  <TableCell>Request Subject</TableCell>
-                  <TableCell>Status</TableCell>
+                  <TableCell>Role</TableCell>
+
                   <TableCell
                     aria-label='actions'
                     style={{ width: '6rem', minWidth: '6rem' }}
@@ -51,17 +47,14 @@ const Requests: FC = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {employees.map((employee) => (
-                  <TableRow key={employee._id}>
-                    <TableCell style={{ fontWeight: 500 }}>
-                      {formatName(employee)}
-                    </TableCell>
-                    <TableCell>{employee.employeeId}</TableCell>
-                    <TableCell>{employee.position}</TableCell>
+                {applicants.map((applicant) => (
+                  <TableRow key={applicant._id}>
+                    <TableCell>{applicant.position}</TableCell>
+
                     <TableCell align='right'>
                       <IconButton
                         size='small'
-                        aria-label='edit employee'
+                        aria-label='edit applicant'
                         style={{ marginRight: '0.25rem' }}
                       >
                         <PencilIcon fontSize='small' />
@@ -69,7 +62,7 @@ const Requests: FC = () => {
                       <IconButton
                         size='small'
                         edge='end'
-                        aria-label='delete employee'
+                        aria-label='delete applicant'
                       >
                         <DeleteIcon fontSize='small' />
                       </IconButton>
@@ -92,8 +85,8 @@ const Requests: FC = () => {
       ) : (
         'Loading'
       )}
-    </AdminWrapper>
+    </>
   );
 };
 
-export default Requests;
+export default Roles;

@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import clsx from 'clsx';
-import { Grid, Hidden, Container } from '@material-ui/core';
+import { Grid, Hidden, Container, Paper, Typography } from '@material-ui/core';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme: Theme) =>
@@ -18,7 +18,29 @@ export const useStyles = makeStyles((theme: Theme) =>
     },
     loginInfo: {
       // temp color, placeholder
-      backgroundColor: 'gray',
+      backgroundColor: '#FAFAFA',
+    },
+    paper: {
+      padding: theme.spacing(2),
+      height: '100%',
+      width: '100%',
+      [theme.breakpoints.up('sm')]: {
+        padding: theme.spacing(3),
+      },
+    },
+    itemImage: {
+      maxWidth: '100%',
+      display: 'flex',
+      objectFit: 'contain',
+      margin: `0 auto ${theme.spacing(1)}px`,
+    },
+    itemLabel: {
+      textAlign: 'center',
+    },
+    mainTypography: {
+      color: '#172B4D',
+      fontWeight: 700,
+      fontSize: 54,
     },
   })
 );
@@ -40,7 +62,16 @@ const LoginBase: FC<LoginBaseProps> = ({ children, className, ...rest }) => {
       </Grid>
       <Hidden smDown>
         <Grid item xs className={classes.loginInfo}>
-          <Container>Description goes here</Container>
+          <Paper className={classes.paper}>
+            <br />
+            <br />
+            <br />
+            <img
+              className={classes.itemImage}
+              src='https://i.imgur.com/jcswlEQ.png'
+              alt='coverimage'
+            />
+          </Paper>
         </Grid>
       </Hidden>
     </Grid>

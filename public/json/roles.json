@@ -1,0 +1,77 @@
+[
+  {
+    "_id": "0",
+    "firstName": "Inger",
+    "middleName": "Bradder",
+    "lastName": "Castagneto",
+    "suffix": "",
+    "gender": "Female",
+    "birthDate": {
+      "year": 2002,
+      "month": 6,
+      "date": 19
+    },
+    "nationality": "Native Hawaiian",
+    "contactNumber": "7086463368",
+    "email": "icastagneto0@howstuffworks.com",
+    "address": "33670 Graedel Place",
+    "position": "Administrator",
+    "interviewSchedule": {
+      "year": 2008,
+      "month": 11,
+      "day": 15
+    },
+    "applicationResult": "Failed",
+    "applicationRemarks": "morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed"
+  },
+  {
+    "_id": "0",
+    "firstName": "Inger",
+    "middleName": "Bradder",
+    "lastName": "Castagneto",
+    "suffix": "",
+    "gender": "Female",
+    "birthDate": {
+      "year": 2002,
+      "month": 6,
+      "date": 19
+    },
+    "nationality": "Native Hawaiian",
+    "contactNumber": "7086463368",
+    "email": "icastagneto0@howstuffworks.com",
+    "address": "33670 Graedel Place",
+    "position": "Coordinator",
+    "interviewSchedule": {
+      "year": 2008,
+      "month": 11,
+      "day": 15
+    },
+    "applicationResult": "Failed",
+    "applicationRemarks": "morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed"
+  },
+  {
+    "_id": "0",
+    "firstName": "Inger",
+    "middleName": "Bradder",
+    "lastName": "Castagneto",
+    "suffix": "",
+    "gender": "Female",
+    "birthDate": {
+      "year": 2002,
+      "month": 6,
+      "date": 19
+    },
+    "nationality": "Native Hawaiian",
+    "contactNumber": "7086463368",
+    "email": "icastagneto0@howstuffworks.com",
+    "address": "33670 Graedel Place",
+    "position": "Neotype",
+    "interviewSchedule": {
+      "year": 2008,
+      "month": 11,
+      "day": 15
+    },
+    "applicationResult": "Failed",
+    "applicationRemarks": "morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed"
+  }
+]
