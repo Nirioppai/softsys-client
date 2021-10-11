@@ -2,17 +2,17 @@ import axios from 'axios';
 import { baseUrl } from 'services';
 
 export const getEmployees = () => {
-  return axios.get(`${baseUrl}/employees.json`);
+  return axios.get(`${baseUrl}/employee`);
 };
 
 export const postEmployee = (data: any) => {
-  return axios.post(`https://jsonplaceholder.typicode.com/users`, data);
+  return axios.post(`${baseUrl}/employee`, data);
 };
 
 export const putEmployee = (_id: string, data: any) => {
-  return axios.put(`https://jsonplaceholder.typicode.com/users/${_id}`, data);
+  return axios.put(`${baseUrl}/employee/${_id}`, data);
 };
 
 export const deleteEmployee = (_id: string) => {
-  return axios.delete(`https://jsonplaceholder.typicode.com/users/${_id}`);
+  return axios.delete(`${baseUrl}/employee/${_id}`);
 };
