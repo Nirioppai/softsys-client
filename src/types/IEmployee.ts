@@ -6,11 +6,7 @@ export interface IEmployee {
   lastName: string;
   suffix: string;
   gender: string;
-  birthDate: {
-    year: number;
-    month: number;
-    day: number;
-  };
+  birthDate: string;
   nationality: string;
   contactNumber: string;
   address: string;
