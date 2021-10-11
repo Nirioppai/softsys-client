@@ -1,43 +1,142 @@
 import { FC, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Typography, Button, IconButton } from '@material-ui/core';
 import {
-  Typography,
+  Plus as PlusIcon,
+  Pencil as PencilIcon,
+  Delete as DeleteIcon,
+} from 'mdi-material-ui';
+import {
+  AdminWrapper,
+  PageLoader,
   Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  IconButton,
-} from '@material-ui/core';
-import { Pencil as PencilIcon, Delete as DeleteIcon } from 'mdi-material-ui';
-import { AdminWrapper, PageLoader } from 'components';
-import { getEmployees } from 'services';
+  ErrorInfo,
+  DeleteDialog,
+} from 'components';
+import { getEmployees, deleteEmployee } from 'services';
 import { IEmployee } from 'types';
-import { formatName, fullNameSorter } from 'utils';
+import { formatName, fullNameSorter, useErrorMessageRenderer } from 'utils';
+import { AddEmployeeModal, EditEmployeeModal } from './modals';
+import { useSnackbar } from 'notistack';
 
 const Employees: FC = () => {
-  const [employees, setEmployees] = useState<IEmployee[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  // const [hasError, setHasError] = useState(false);
+  // Hooks
+  const showError = useErrorMessageRenderer();
+  const { enqueueSnackbar } = useSnackbar();
 
-  const addEmployee = (newEmployee: IEmployee) => {
-    setEmployees([...employees, newEmployee].sort(fullNameSorter));
+  // Data
+  const [employees, setEmployees] = useState<IEmployee[]>([]);
+  const [selectedEmployee, setSelectedEmployee] = useState<IEmployee | null>(
+    null
+  );
+
+  // Page status
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+
+  // Modals
+  const [addModalOpen, setAddModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+
+  const openAddModal = () => {
+    setAddModalOpen(true);
   };
 
-  const updateEmployee = (updatedEmployee: IEmployee) => {
+  const closeAddModal = () => setAddModalOpen(false);
+
+  const openEditModal = (employee: IEmployee) => {
+    setSelectedEmployee(employee);
+    setEditModalOpen(true);
+  };
+
+  const closeEditModal = () => setEditModalOpen(false);
+
+  const openDeleteModal = (employee: IEmployee) => {
+    setSelectedEmployee(employee);
+    setDeleteModalOpen(true);
+  };
+
+  const closeDeleteModal = () => setDeleteModalOpen(false);
+
+  const columns = [
+    {
+      Header: 'No.',
+      id: 'row',
+      filterable: false,
+      accessor: (row: any, index: number) => index + 1,
+      cellStyle: {
+        width: 100,
+      },
+    },
+    {
+      Header: 'Name',
+      id: 'name',
+      accessor: (originalRow: any) => formatName(originalRow),
+    },
+    {
+      Header: 'Employee ID',
+      accessor: 'employeeId',
+    },
+    {
+      Header: 'Position',
+      accessor: 'position',
+    },
+    {
+      ariaLabel: 'actions',
+      id: 'actions',
+      Cell: ({ row }: any) => (
+        <>
+          <IconButton
+            size='small'
+            aria-label='edit employee'
+            onClick={() => openEditModal(row.original)}
+          >
+            <PencilIcon fontSize='small' />
+          </IconButton>
+          <IconButton
+            size='small'
+            edge='end'
+            aria-label='delete employee'
+            onClick={() => openDeleteModal(row.original)}
+          >
+            <DeleteIcon fontSize='small' />
+          </IconButton>
+        </>
+      ),
+    },
+  ];
+
+  const handleAddEmployee = (newEmployee: IEmployee) => {
+    setEmployees([...employees, newEmployee].sort(fullNameSorter));
+    enqueueSnackbar('Employee added', { variant: 'success' });
+    closeAddModal();
+  };
+
+  const handleUpdateEmployee = (updatedEmployee: IEmployee) => {
     setEmployees(
       employees.map((employee) =>
         employee._id === updatedEmployee._id ? updatedEmployee : employee
       )
     );
+    enqueueSnackbar('Employee updated', { variant: 'success' });
+    closeEditModal();
   };
 
-  const deleteEmployee = (deletedEmployee: IEmployee) => {
-    setEmployees(
-      employees.filter((employee) => employee._id !== deletedEmployee._id)
-    );
+  const handleDeleteEmployee = async () => {
+    try {
+      if (selectedEmployee) {
+        await deleteEmployee(selectedEmployee._id);
+
+        setEmployees(
+          employees.filter((employee) => employee._id !== selectedEmployee._id)
+        );
+        enqueueSnackbar('Employee deleted', { variant: 'success' });
+        closeDeleteModal();
+      }
+    } catch (err) {
+      showError(err);
+    }
   };
 
   useEffect(() => {
@@ -47,7 +146,7 @@ const Employees: FC = () => {
         setEmployees(data);
       } catch (err) {
         console.error(err);
-        // setHasError(true);
+        setHasError(true);
       } finally {
         setIsLoading(false);
       }
@@ -56,6 +155,18 @@ const Employees: FC = () => {
     fetchData();
   }, []);
 
+  if (hasError) {
+    return (
+      <AdminWrapper>
+        <Helmet title='Employees' />
+        <Typography variant='h1' gutterBottom>
+          Employees
+        </Typography>
+        <ErrorInfo />
+      </AdminWrapper>
+    );
+  }
+
   return (
     <AdminWrapper>
       <Helmet title='Employees' />
@@ -63,50 +174,40 @@ const Employees: FC = () => {
         Employees
       </Typography>
       {!isLoading ? (
-        <Paper style={{ marginBottom: '1.5rem' }}>
-          <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Employee ID</TableCell>
-                  <TableCell>Position</TableCell>
-                  <TableCell
-                    aria-label='actions'
-                    style={{ width: '6rem', minWidth: '6rem' }}
-                  />
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {employees.map((employee) => (
-                  <TableRow key={employee._id}>
-                    <TableCell style={{ fontWeight: 500 }}>
-                      {formatName(employee)}
-                    </TableCell>
-                    <TableCell>{employee.employeeId}</TableCell>
-                    <TableCell>{employee.position}</TableCell>
-                    <TableCell align='right'>
-                      <IconButton
-                        size='small'
-                        aria-label='edit employee'
-                        style={{ marginRight: '0.25rem' }}
-                      >
-                        <PencilIcon fontSize='small' />
-                      </IconButton>
-                      <IconButton
-                        size='small'
-                        edge='end'
-                        aria-label='delete employee'
-                      >
-                        <DeleteIcon fontSize='small' />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Paper>
+        <>
+          <Button
+            color='primary'
+            variant='contained'
+            startIcon={<PlusIcon />}
+            onClick={openAddModal}
+            style={{ marginBottom: '1rem' }}
+          >
+            Add
+          </Button>
+          <Table columns={columns} data={employees} actionButtonCount={2} />
+          <AddEmployeeModal
+            open={addModalOpen}
+            onClose={closeAddModal}
+            onAdd={handleAddEmployee}
+          />
+          {selectedEmployee && (
+            <>
+              <EditEmployeeModal
+                open={editModalOpen}
+                onClose={closeEditModal}
+                onSave={handleUpdateEmployee}
+                employee={selectedEmployee}
+              />
+              <DeleteDialog
+                open={deleteModalOpen}
+                onClose={closeDeleteModal}
+                onDelete={handleDeleteEmployee}
+                title='Delete Employee'
+                itemName={formatName(selectedEmployee)}
+              />
+            </>
+          )}
+        </>
       ) : (
         <PageLoader />
       )}
