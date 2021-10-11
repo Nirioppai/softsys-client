@@ -21,60 +21,64 @@ import {
   NotFound,
 } from 'pages';
 
-function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <SnackbarProvider>
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <CssBaseline />
-          <HelmetProvider>
-            <Helmet
-              titleTemplate='%s - Human Resource Information System'
-              defaultTitle='Human Resource Information System'
-            />
-            <BrowserRouter>
-              <Switch>
-                {/* Auth */}
-                <Route exact path='/' component={Portal} />
-                <Route exact path='/admin/login' component={AdminLogin} />
+// axios interceptors
+import { setupInterceptorsTo } from 'axios/interceptors';
+import axios from 'axios';
 
-                {/* Admin */}
-                <ProtectedAdminRoute exact path='/home' component={Home} />
-                <ProtectedAdminRoute
-                  exact
-                  path='/applicants'
-                  component={Applicants}
-                />
-                <ProtectedAdminRoute
-                  exact
-                  path='/employees'
-                  component={Employees}
-                />
-                <ProtectedAdminRoute
-                  exact
-                  path='/organizational-chart'
-                  component={OrganizationalChart}
-                />
-                <ProtectedAdminRoute
-                  exact
-                  path='/requests'
-                  component={Requests}
-                />
-                <ProtectedAdminRoute
-                  exact
-                  path='/attendance'
-                  component={Attendance}
-                />
+setupInterceptorsTo(axios);
 
-                {/* Misc */}
-                <Route path='*' component={NotFound} />
-              </Switch>
-            </BrowserRouter>
-          </HelmetProvider>
-        </MuiPickersUtilsProvider>
-      </SnackbarProvider>
-    </ThemeProvider>
-  );
-}
+const App = () => (
+  <ThemeProvider theme={theme}>
+    <SnackbarProvider>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <CssBaseline />
+        <HelmetProvider>
+          <Helmet
+            titleTemplate='%s - Human Resource Information System'
+            defaultTitle='Human Resource Information System'
+          />
+          <BrowserRouter>
+            <Switch>
+              {/* Auth */}
+              <Route exact path='/' component={Portal} />
+              <Route exact path='/admin/login' component={AdminLogin} />
+
+              {/* Admin */}
+              <ProtectedAdminRoute exact path='/home' component={Home} />
+              <ProtectedAdminRoute
+                exact
+                path='/applicants'
+                component={Applicants}
+              />
+              <ProtectedAdminRoute
+                exact
+                path='/employees'
+                component={Employees}
+              />
+              <ProtectedAdminRoute
+                exact
+                path='/organizational-chart'
+                component={OrganizationalChart}
+              />
+              <ProtectedAdminRoute
+                exact
+                path='/requests'
+                component={Requests}
+              />
+              <ProtectedAdminRoute
+                exact
+                path='/attendance'
+                component={Attendance}
+              />
+
+              {/* Misc */}
+              <Route path='*' component={NotFound} />
+            </Switch>
+          </BrowserRouter>
+        </HelmetProvider>
+      </MuiPickersUtilsProvider>
+    </SnackbarProvider>
+  </ThemeProvider>
+);
 
 export default App;
