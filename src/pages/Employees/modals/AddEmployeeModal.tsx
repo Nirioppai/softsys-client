@@ -33,31 +33,62 @@ const AddEmployeeModal: FC<AddEmployeeModalProps> = ({
 
   const handleSubmit = async (values: any) => {
     try {
-      // * Replace with this when integrating with actual API
-      // const { data } = await postEmployee(values);
-      // onAdd(data);
-
-      // * Remove this when integrating with actual API
-      await postEmployee(values);
-      onAdd({
+      const reqBody = {
         ...values,
-        _id: new Date().toString(),
-        birthDate: '',
+        name: {
+          ...values.name,
+          title: '',
+        },
+        contactNumber: {
+          mobileNumber: [],
+          landLineNumber: [],
+        },
+        homeAddress: {
+          homeNumOrLotNum: '',
+          streetName: '',
+          districtOrTown: '',
+          zipCode: '',
+          province: '',
+          country: '',
+        },
+        currentAddress: {
+          homeNumOrLotNum: '',
+          streetName: '',
+          districtOrTown: '',
+          zipCode: '',
+          province: '',
+          country: '',
+        },
+        permanentAddress: {
+          homeNumOrLotNum: '',
+          streetName: '',
+          districtOrTown: '',
+          zipCode: '',
+          province: '',
+          country: '',
+        },
+        role: '',
+        permissions: [],
+        type: '',
         nationality: '',
-        contactNumber: '',
-        address: '',
-        position: '',
-      });
+        isActive: true,
+        dateOfBirth: '',
+      };
+
+      const { data } = await postEmployee(reqBody);
+      onAdd(data.data);
     } catch (err) {
       showError(err);
     }
   };
 
   const validationSchema = Yup.object().shape({
-    firstName: Yup.string().required('Required'),
-    middleName: Yup.string(),
-    lastName: Yup.string().required('Required'),
-    suffix: Yup.string(),
+    name: Yup.object().shape({
+      firstName: Yup.string().required('Required'),
+      middleName: Yup.string(),
+      lastName: Yup.string().required('Required'),
+      suffix: Yup.string(),
+    }),
     employeeId: Yup.string().required('Required'),
     gender: Yup.string().required('Required'),
   });
@@ -65,10 +96,12 @@ const AddEmployeeModal: FC<AddEmployeeModalProps> = ({
   return (
     <Formik
       initialValues={{
-        firstName: '',
-        middleName: '',
-        lastName: '',
-        suffix: '',
+        name: {
+          firstName: '',
+          middleName: '',
+          lastName: '',
+          suffix: '',
+        },
         employeeId: '',
         gender: '',
       }}
@@ -97,26 +130,26 @@ const AddEmployeeModal: FC<AddEmployeeModalProps> = ({
                 component={TextField}
                 autoFocus
                 required
-                name='firstName'
+                name='name.firstName'
                 autoComplete='given-name'
                 label='First Name'
               />
               <Field
                 component={TextField}
-                name='middleName'
+                name='name.middleName'
                 autoComplete='additional-name'
                 label='Middle Name'
               />
               <Field
                 component={TextField}
                 required
-                name='lastName'
+                name='name.lastName'
                 autoComplete='family-name'
                 label='Last Name'
               />
               <Field
                 component={TextField}
-                name='suffix'
+                name='name.suffix'
                 autoComplete='honorific-suffix'
                 label='Suffix'
               />

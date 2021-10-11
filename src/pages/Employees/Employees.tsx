@@ -15,7 +15,11 @@ import {
 } from 'components';
 import { getEmployees, deleteEmployee } from 'services';
 import { IEmployee } from 'types';
-import { formatName, fullNameSorter, useErrorMessageRenderer } from 'utils';
+import {
+  formatName,
+  nestedFullNameSorter,
+  useErrorMessageRenderer,
+} from 'utils';
 import { AddEmployeeModal, EditEmployeeModal } from './modals';
 import { useSnackbar } from 'notistack';
 
@@ -30,7 +34,7 @@ const Employees: FC = () => {
     null
   );
 
-  // Page status
+  // Page statuses
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
@@ -72,7 +76,7 @@ const Employees: FC = () => {
     {
       Header: 'Name',
       id: 'name',
-      accessor: (originalRow: any) => formatName(originalRow),
+      accessor: (originalRow: any) => formatName(originalRow.name),
     },
     {
       Header: 'Employee ID',
@@ -108,7 +112,11 @@ const Employees: FC = () => {
   ];
 
   const handleAddEmployee = (newEmployee: IEmployee) => {
-    setEmployees([...employees, newEmployee].sort(fullNameSorter));
+    setEmployees(
+      [...employees, newEmployee].sort((a, b) =>
+        nestedFullNameSorter(a, b, 'name')
+      )
+    );
     enqueueSnackbar('Employee added', { variant: 'success' });
     closeAddModal();
   };
@@ -143,7 +151,11 @@ const Employees: FC = () => {
     const fetchData = async () => {
       try {
         const { data } = await getEmployees();
-        setEmployees(data);
+        setEmployees(
+          data.data.sort((a: IEmployee, b: IEmployee) =>
+            nestedFullNameSorter(a, b, 'name')
+          )
+        );
       } catch (err) {
         console.error(err);
         setHasError(true);
@@ -203,7 +215,7 @@ const Employees: FC = () => {
                 onClose={closeDeleteModal}
                 onDelete={handleDeleteEmployee}
                 title='Delete Employee'
-                itemName={formatName(selectedEmployee)}
+                itemName={formatName(selectedEmployee.name)}
               />
             </>
           )}
