@@ -16,11 +16,11 @@ import {
 import { Pencil as PencilIcon, Delete as DeleteIcon } from 'mdi-material-ui';
 import { AdminWrapper } from 'components';
 import { getApplicants } from 'services';
-import { ApplicantTypes } from 'types';
+import { IApplicant } from 'types';
 import { formatName } from 'utils';
 
 const Applicants: FC = () => {
-  const [applicants, setApplicants] = useState<ApplicantTypes[]>([]);
+  const [applicants, setApplicants] = useState<IApplicant[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {

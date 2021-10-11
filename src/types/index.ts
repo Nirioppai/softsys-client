@@ -1,4 +1,4 @@
-export * from './AdminLoginTypes';
-export * from './ApplicantTypes';
-export * from './DrawerListGroupsOptions';
+export * from './IAdminLogin';
+export * from './IApplicant';
+export * from './IDrawerListGroups';
 export * from './IEmployee';

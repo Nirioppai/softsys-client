@@ -10,23 +10,50 @@ import {
   TableRow,
   Paper,
   IconButton,
-  TablePagination,
 } from '@material-ui/core';
 import { Pencil as PencilIcon, Delete as DeleteIcon } from 'mdi-material-ui';
 import { AdminWrapper } from 'components';
 import { getEmployees } from 'services';
-import { EmployeeTypes } from 'types';
-import { formatName } from 'utils';
+import { IEmployee } from 'types';
+import { formatName, fullNameSorter } from 'utils';
 
 const Employees: FC = () => {
-  const [employees, setEmployees] = useState<EmployeeTypes[]>([]);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [employees, setEmployees] = useState<IEmployee[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  // const [hasError, setHasError] = useState(false);
+
+  const addEmployee = (newEmployee: IEmployee) => {
+    setEmployees([...employees, newEmployee].sort(fullNameSorter));
+  };
+
+  const updateEmployee = (updatedEmployee: IEmployee) => {
+    setEmployees(
+      employees.map((employee) =>
+        employee._id === updatedEmployee._id ? updatedEmployee : employee
+      )
+    );
+  };
+
+  const deleteEmployee = (deletedEmployee: IEmployee) => {
+    setEmployees(
+      employees.filter((employee) => employee._id !== deletedEmployee._id)
+    );
+  };
 
   useEffect(() => {
-    getEmployees()
-      .then((res) => setEmployees(res.data))
-      .catch((err) => console.error(err))
-      .finally(() => setIsLoaded(true));
+    const fetchData = async () => {
+      try {
+        const { data } = await getEmployees();
+        setEmployees(data);
+      } catch (err) {
+        console.error(err);
+        // setHasError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
@@ -35,7 +62,7 @@ const Employees: FC = () => {
       <Typography variant='h1' gutterBottom>
         Employees
       </Typography>
-      {isLoaded ? (
+      {!isLoading ? (
         <Paper style={{ marginBottom: '1.5rem' }}>
           <TableContainer>
             <Table>
@@ -79,15 +106,6 @@ const Employees: FC = () => {
               </TableBody>
             </Table>
           </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[10, 25, 100]}
-            component='div'
-            count={10}
-            rowsPerPage={10}
-            page={10}
-            onChangePage={() => {}}
-            onChangeRowsPerPage={() => {}}
-          />
         </Paper>
       ) : (
         'Loading'

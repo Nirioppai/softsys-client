@@ -14,12 +14,12 @@ import { Menu as MenuIcon } from 'mdi-material-ui';
 import { useMainLayoutStyles } from './useMainLayoutStyles';
 import { ToolbarContent } from './ToolbarContent';
 import { DrawerLayout } from './DrawerLayout';
-import { DrawerListGroupsOptions } from '../../types';
+import { IDrawerListGroups } from '../../types';
 
 interface MainLayoutProps {
   children?: ReactNode;
   className?: string;
-  drawerListGroups: DrawerListGroupsOptions[];
+  drawerListGroups: IDrawerListGroups[];
 }
 
 const MainLayout: FC<MainLayoutProps> = ({
