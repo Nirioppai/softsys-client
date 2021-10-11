@@ -189,13 +189,11 @@ const EditEmployeeModal: FC<EditEmployeeModalProps> = ({
               />
               <Field
                 component={TextField}
-                required
                 name='contactNumber.mobileNumber[0]'
                 label='Mobile Number'
               />
               <Field
                 component={TextField}
-                required
                 name='contactNumber.landLineNumber[0]'
                 label='Landline'
               />
@@ -209,37 +207,31 @@ const EditEmployeeModal: FC<EditEmployeeModalProps> = ({
               </Typography>
               <Field
                 component={TextField}
-                required
                 name='homeAddress.homeNumOrLotNum'
                 label='House Number'
               />
               <Field
                 component={TextField}
-                required
                 name='homeAddress.streetName'
                 label='Street Address'
               />
               <Field
                 component={TextField}
-                required
                 name='homeAddress.districtOrTown'
                 label='Town / District'
               />
               <Field
                 component={TextField}
-                required
                 name='homeAddress.zipCode'
                 label='Zip / Postal Code'
               />
               <Field
                 component={TextField}
-                required
                 name='homeAddress.province'
                 label='State / Province'
               />
               <Field
                 component={TextField}
-                required
                 name='homeAddress.country'
                 label='Country'
               />
@@ -253,37 +245,31 @@ const EditEmployeeModal: FC<EditEmployeeModalProps> = ({
               </Typography>
               <Field
                 component={TextField}
-                required
                 name='permanentAddress.homeNumOrLotNum'
                 label='House Number'
               />
               <Field
                 component={TextField}
-                required
                 name='permanentAddress.streetName'
                 label='Street Address'
               />
               <Field
                 component={TextField}
-                required
                 name='permanentAddress.districtOrTown'
                 label='Town / District'
               />
               <Field
                 component={TextField}
-                required
                 name='permanentAddress.zipCode'
                 label='Zip / Postal Code'
               />
               <Field
                 component={TextField}
-                required
                 name='permanentAddress.province'
                 label='State / Province'
               />
               <Field
                 component={TextField}
-                required
                 name='permanentAddress.country'
                 label='Country'
               />
@@ -297,37 +283,31 @@ const EditEmployeeModal: FC<EditEmployeeModalProps> = ({
               </Typography>
               <Field
                 component={TextField}
-                required
                 name='currentAddress.homeNumOrLotNum'
                 label='House Number'
               />
               <Field
                 component={TextField}
-                required
                 name='currentAddress.streetName'
                 label='Street Address'
               />
               <Field
                 component={TextField}
-                required
                 name='currentAddress.districtOrTown'
                 label='Town / District'
               />
               <Field
                 component={TextField}
-                required
                 name='currentAddress.zipCode'
                 label='Zip / Postal Code'
               />
               <Field
                 component={TextField}
-                required
                 name='currentAddress.province'
                 label='State / Province'
               />
               <Field
                 component={TextField}
-                required
                 name='currentAddress.country'
                 label='Country'
               />
