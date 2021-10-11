@@ -18,7 +18,7 @@ import { KeyboardDatePicker } from 'formik-material-ui-pickers';
 import * as Yup from 'yup';
 import { IEmployee } from 'types';
 import { useErrorMessageRenderer } from 'utils';
-import { postEmployee } from 'services';
+import { putEmployee } from 'services';
 
 interface EditEmployeeModalProps extends DialogProps {
   onClose: () => void;
@@ -34,34 +34,60 @@ const EditEmployeeModal: FC<EditEmployeeModalProps> = ({
 }) => {
   const showError = useErrorMessageRenderer();
 
-  const { _id, ...initialValues } = employee;
+  const { _id, __v, createdAt, updatedAt, ...initialValues } = employee;
 
   const handleSubmit = async (values: any) => {
     try {
-      // * Replace with this when integrating with actual API
-      // const { data } = await putEmployee(_id, values);
-      // onSave(data);
-
-      // * Remove this when integrating with actual API
-      await postEmployee(values);
-      onSave({ ...employee, ...values });
+      const { data } = await putEmployee(_id, { ...values, type: 'employee' });
+      onSave(data.data);
     } catch (err) {
       showError(err);
     }
   };
 
   const validationSchema = Yup.object().shape({
-    firstName: Yup.string().required('Required'),
-    middleName: Yup.string(),
-    lastName: Yup.string().required('Required'),
-    suffix: Yup.string(),
-    employeeId: Yup.string().required('Required'),
+    name: Yup.object().shape({
+      firstName: Yup.string().required('Required'),
+      middleName: Yup.string(),
+      lastName: Yup.string().required('Required'),
+      suffix: Yup.string(),
+    }),
     gender: Yup.string().required('Required'),
-    birthDate: Yup.date().required('Required'),
+    dateOfBirth: Yup.string().required('Required'),
     nationality: Yup.string().required('Required'),
-    contactNumber: Yup.string().required('Required'),
-    address: Yup.string().required('Required'),
-    position: Yup.string().required('Required'),
+    contactNumber: Yup.object().shape({
+      mobileNumber: Yup.array().of(Yup.string()),
+      landLineNumber: Yup.array().of(Yup.string()),
+    }),
+    homeAddress: Yup.object().shape({
+      homeNumOrLotNum: Yup.string(),
+      streetName: Yup.string(),
+      districtOrTown: Yup.string(),
+      zipCode: Yup.string(),
+      province: Yup.string(),
+      country: Yup.string(),
+    }),
+    permanentAddress: Yup.object().shape({
+      homeNumOrLotNum: Yup.string(),
+      streetName: Yup.string(),
+      districtOrTown: Yup.string(),
+      zipCode: Yup.string(),
+      province: Yup.string(),
+      country: Yup.string(),
+    }),
+    currentAddress: Yup.object().shape({
+      homeNumOrLotNum: Yup.string(),
+      streetName: Yup.string(),
+      districtOrTown: Yup.string(),
+      zipCode: Yup.string(),
+      province: Yup.string(),
+      country: Yup.string(),
+    }),
+    employeeId: Yup.string().required('Required'),
+    role: Yup.string().required('Required'),
+    permissions: Yup.array(),
+    type: Yup.string(),
+    isActive: Yup.boolean(),
   });
 
   return (
@@ -80,6 +106,7 @@ const EditEmployeeModal: FC<EditEmployeeModalProps> = ({
           }}
           disableBackdropClick={isSubmitting}
           disableEscapeKeyDown={isSubmitting}
+          maxWidth='lg'
         >
           <Form>
             <DialogTitle disableTypography>
@@ -88,38 +115,40 @@ const EditEmployeeModal: FC<EditEmployeeModalProps> = ({
               </Typography>
             </DialogTitle>
             <DialogContent>
+              {/* Basic information */}
+              <Typography
+                variant='h4'
+                component='h3'
+                style={{ marginBottom: '1rem' }}
+              >
+                Basic Information
+              </Typography>
               <Field
                 component={TextField}
                 autoFocus
                 required
-                name='firstName'
+                name='name.firstName'
                 autoComplete='given-name'
                 label='First Name'
               />
               <Field
                 component={TextField}
-                name='middleName'
+                name='name.middleName'
                 autoComplete='additional-name'
                 label='Middle Name'
               />
               <Field
                 component={TextField}
                 required
-                name='lastName'
+                name='name.lastName'
                 autoComplete='family-name'
                 label='Last Name'
               />
               <Field
                 component={TextField}
-                name='suffix'
+                name='name.suffix'
                 autoComplete='honorific-suffix'
                 label='Suffix'
-              />
-              <Field
-                component={TextField}
-                required
-                name='employeeId'
-                label='Employee ID'
               />
               <FormControl
                 required
@@ -148,7 +177,7 @@ const EditEmployeeModal: FC<EditEmployeeModalProps> = ({
               </FormControl>
               <Field
                 component={KeyboardDatePicker}
-                name='birthDate'
+                name='dateOfBirth'
                 label='Date of Birth'
                 format='P'
               />
@@ -161,21 +190,162 @@ const EditEmployeeModal: FC<EditEmployeeModalProps> = ({
               <Field
                 component={TextField}
                 required
-                name='contactNumber'
-                label='Contact Number'
+                name='contactNumber.mobileNumber[0]'
+                label='Mobile Number'
               />
               <Field
                 component={TextField}
                 required
-                name='address'
-                label='Address'
+                name='contactNumber.landLineNumber[0]'
+                label='Landline'
+              />
+              {/* Home address */}
+              <Typography
+                variant='h4'
+                component='h3'
+                style={{ marginBottom: '1rem' }}
+              >
+                Home Address
+              </Typography>
+              <Field
+                component={TextField}
+                required
+                name='homeAddress.homeNumOrLotNum'
+                label='House Number'
               />
               <Field
                 component={TextField}
                 required
-                name='position'
-                label='Position'
+                name='homeAddress.streetName'
+                label='Street Address'
               />
+              <Field
+                component={TextField}
+                required
+                name='homeAddress.districtOrTown'
+                label='Town / District'
+              />
+              <Field
+                component={TextField}
+                required
+                name='homeAddress.zipCode'
+                label='Zip / Postal Code'
+              />
+              <Field
+                component={TextField}
+                required
+                name='homeAddress.province'
+                label='State / Province'
+              />
+              <Field
+                component={TextField}
+                required
+                name='homeAddress.country'
+                label='Country'
+              />
+              {/* Permanent Address */}
+              <Typography
+                variant='h4'
+                component='h3'
+                style={{ marginBottom: '1rem' }}
+              >
+                Permanent Address
+              </Typography>
+              <Field
+                component={TextField}
+                required
+                name='permanentAddress.homeNumOrLotNum'
+                label='House Number'
+              />
+              <Field
+                component={TextField}
+                required
+                name='permanentAddress.streetName'
+                label='Street Address'
+              />
+              <Field
+                component={TextField}
+                required
+                name='permanentAddress.districtOrTown'
+                label='Town / District'
+              />
+              <Field
+                component={TextField}
+                required
+                name='permanentAddress.zipCode'
+                label='Zip / Postal Code'
+              />
+              <Field
+                component={TextField}
+                required
+                name='permanentAddress.province'
+                label='State / Province'
+              />
+              <Field
+                component={TextField}
+                required
+                name='permanentAddress.country'
+                label='Country'
+              />
+              {/* Current Address */}
+              <Typography
+                variant='h4'
+                component='h3'
+                style={{ marginBottom: '1rem' }}
+              >
+                Current Address
+              </Typography>
+              <Field
+                component={TextField}
+                required
+                name='currentAddress.homeNumOrLotNum'
+                label='House Number'
+              />
+              <Field
+                component={TextField}
+                required
+                name='currentAddress.streetName'
+                label='Street Address'
+              />
+              <Field
+                component={TextField}
+                required
+                name='currentAddress.districtOrTown'
+                label='Town / District'
+              />
+              <Field
+                component={TextField}
+                required
+                name='currentAddress.zipCode'
+                label='Zip / Postal Code'
+              />
+              <Field
+                component={TextField}
+                required
+                name='currentAddress.province'
+                label='State / Province'
+              />
+              <Field
+                component={TextField}
+                required
+                name='currentAddress.country'
+                label='Country'
+              />
+              {/* Employee information */}
+              <Typography
+                variant='h4'
+                component='h3'
+                style={{ marginBottom: '1rem' }}
+              >
+                Employee Information
+              </Typography>
+              <Field
+                component={TextField}
+                required
+                name='employeeId'
+                label='Employee ID'
+              />
+              <Field component={TextField} required name='role' label='Role' />
             </DialogContent>
             <DialogActions>
               <Button

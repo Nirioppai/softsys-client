@@ -83,10 +83,6 @@ const Employees: FC = () => {
       accessor: 'employeeId',
     },
     {
-      Header: 'Position',
-      accessor: 'position',
-    },
-    {
       ariaLabel: 'actions',
       id: 'actions',
       Cell: ({ row }: any) => (
@@ -122,11 +118,12 @@ const Employees: FC = () => {
   };
 
   const handleUpdateEmployee = (updatedEmployee: IEmployee) => {
-    setEmployees(
-      employees.map((employee) =>
+    const newArray = employees
+      .map((employee) =>
         employee._id === updatedEmployee._id ? updatedEmployee : employee
       )
-    );
+      .sort((a, b) => nestedFullNameSorter(a, b, 'name'));
+    setEmployees(newArray);
     enqueueSnackbar('Employee updated', { variant: 'success' });
     closeEditModal();
   };

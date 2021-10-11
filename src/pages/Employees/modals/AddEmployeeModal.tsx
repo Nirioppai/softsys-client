@@ -69,7 +69,7 @@ const AddEmployeeModal: FC<AddEmployeeModalProps> = ({
         },
         role: '',
         permissions: [],
-        type: '',
+        type: 'employee',
         nationality: '',
         isActive: true,
         dateOfBirth: '',
