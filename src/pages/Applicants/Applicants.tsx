@@ -11,7 +11,6 @@ import {
   TableRow,
   Paper,
   IconButton,
-  TablePagination,
 } from '@material-ui/core';
 import { Pencil as PencilIcon, Delete as DeleteIcon } from 'mdi-material-ui';
 import { AdminWrapper } from 'components';
@@ -91,15 +90,6 @@ const Applicants: FC = () => {
               </TableBody>
             </Table>
           </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[10, 25, 100]}
-            component='div'
-            count={10}
-            rowsPerPage={10}
-            page={10}
-            onChangePage={() => {}}
-            onChangeRowsPerPage={() => {}}
-          />
         </Paper>
       ) : (
         'Loading'
