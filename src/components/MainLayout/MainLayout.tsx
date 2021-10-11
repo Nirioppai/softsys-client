@@ -14,7 +14,7 @@ import { Menu as MenuIcon } from 'mdi-material-ui';
 import { useMainLayoutStyles } from './useMainLayoutStyles';
 import { ToolbarContent } from './ToolbarContent';
 import { DrawerLayout } from './DrawerLayout';
-import { IDrawerListGroups } from '../../types';
+import { IDrawerListGroups } from 'types';
 
 interface MainLayoutProps {
   children?: ReactNode;

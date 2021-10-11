@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IAdminLogin } from '../../types';
+import { IAdminLogin } from 'types';
 
 const baseURL = `${process.env.REACT_APP_HRIS_URL}/api`;
 
