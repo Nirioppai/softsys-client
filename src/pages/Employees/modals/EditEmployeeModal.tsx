@@ -106,7 +106,6 @@ const EditEmployeeModal: FC<EditEmployeeModalProps> = ({
           }}
           disableBackdropClick={isSubmitting}
           disableEscapeKeyDown={isSubmitting}
-          maxWidth='lg'
         >
           <Form>
             <DialogTitle disableTypography>
