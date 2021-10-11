@@ -12,7 +12,7 @@ import {
   IconButton,
 } from '@material-ui/core';
 import { Pencil as PencilIcon, Delete as DeleteIcon } from 'mdi-material-ui';
-import { AdminWrapper } from 'components';
+import { AdminWrapper, PageLoader } from 'components';
 import { getEmployees } from 'services';
 import { IEmployee } from 'types';
 import { formatName, fullNameSorter } from 'utils';
@@ -108,7 +108,7 @@ const Employees: FC = () => {
           </TableContainer>
         </Paper>
       ) : (
-        'Loading'
+        <PageLoader />
       )}
     </AdminWrapper>
   );
