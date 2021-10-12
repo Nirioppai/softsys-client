@@ -6,7 +6,7 @@ export const getEmployees = () => {
 };
 
 export const postEmployee = (data: any) => {
-  return axios.post(`${baseUrl}/employee`, data);
+  return axios.post(`${baseUrl}/auth/employee/register`, data);
 };
 
 export const putEmployee = (_id: string, data: any) => {

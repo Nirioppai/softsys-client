@@ -7,13 +7,9 @@ import {
   DialogActions,
   Button,
   Typography,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  FormHelperText,
 } from '@material-ui/core';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { TextField, Select } from 'formik-material-ui';
+import { Formik, Form, Field } from 'formik';
+import { TextField } from 'formik-material-ui';
 import * as Yup from 'yup';
 import { IEmployee } from 'types';
 import { useErrorMessageRenderer } from 'utils';
@@ -69,9 +65,7 @@ const AddEmployeeModal: FC<AddEmployeeModalProps> = ({
         },
         role: '',
         permissions: [],
-        type: 'employee',
         nationality: '',
-        isActive: true,
         dateOfBirth: '',
       };
 
@@ -90,7 +84,6 @@ const AddEmployeeModal: FC<AddEmployeeModalProps> = ({
       suffix: Yup.string(),
     }),
     employeeId: Yup.string().required('Required'),
-    gender: Yup.string().required('Required'),
   });
 
   return (
@@ -103,7 +96,6 @@ const AddEmployeeModal: FC<AddEmployeeModalProps> = ({
           suffix: '',
         },
         employeeId: '',
-        gender: '',
       }}
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
@@ -159,31 +151,6 @@ const AddEmployeeModal: FC<AddEmployeeModalProps> = ({
                 name='employeeId'
                 label='Employee ID'
               />
-              <FormControl
-                required
-                variant='outlined'
-                fullWidth
-                error={touched.gender && !!errors.gender}
-              >
-                <InputLabel htmlFor='gender'>Gender</InputLabel>
-                <Field
-                  component={Select}
-                  required
-                  name='gender'
-                  label='Gender'
-                  margin='none'
-                  inputProps={{
-                    id: 'gender',
-                  }}
-                >
-                  <MenuItem value='' disabled>
-                    Select an option
-                  </MenuItem>
-                  <MenuItem value='male'>Male</MenuItem>
-                  <MenuItem value='female'>Female</MenuItem>
-                </Field>
-                <ErrorMessage component={FormHelperText} name='gender' />
-              </FormControl>
             </DialogContent>
             <DialogActions>
               <Button
