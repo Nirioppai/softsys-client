@@ -14,7 +14,7 @@ import * as Yup from 'yup';
 import { TextField } from 'formik-material-ui';
 import { Eye as EyeIcon, EyeOff as EyeOffIcon } from 'mdi-material-ui';
 import { loginAdmin } from 'services';
-import { AdminLoginTypes } from 'types';
+import { IAdminLogin } from 'types';
 
 const adminLoginSchema = Yup.object().shape({
   adminId: Yup.string().required('Required'),
@@ -33,7 +33,7 @@ const Login: FC = () => {
     event.preventDefault();
   };
 
-  const handleSubmit = async (adminData: AdminLoginTypes) => {
+  const handleSubmit = async (adminData: IAdminLogin) => {
     try {
       const { data } = await loginAdmin(adminData);
       setIsInvalid(false);

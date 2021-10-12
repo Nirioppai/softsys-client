@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import MainLayout from '../MainLayout';
+import { MainLayout } from 'components';
 import { adminDrawerListGroups } from './adminDrawerListGroups';
 
 const AdminWrapper: FC = (props) => {

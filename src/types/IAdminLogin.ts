@@ -1,4 +1,4 @@
-export interface AdminLoginTypes {
+export interface IAdminLogin {
   adminId: string;
   password: string;
 }

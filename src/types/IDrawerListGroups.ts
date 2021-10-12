@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export interface DrawerListGroupsOptions {
+export interface IDrawerListGroups {
   name: string;
   items: {
     name: string;
