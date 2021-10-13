@@ -1,4 +1,4 @@
-export interface ApplicantTypes {
+export interface IApplicant {
   _id: string;
   firstName: string;
   middleName: string;

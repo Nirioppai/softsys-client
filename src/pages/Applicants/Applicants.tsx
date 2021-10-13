@@ -11,17 +11,16 @@ import {
   TableRow,
   Paper,
   IconButton,
-  TablePagination,
 } from '@material-ui/core';
 import { Pencil as PencilIcon, Delete as DeleteIcon } from 'mdi-material-ui';
 import { AdminWrapper } from 'components';
 import { getApplicants } from 'services';
-import { ApplicantTypes } from 'types';
+import { IApplicant } from 'types';
 import { formatName } from 'utils';
 import AddApplicant from 'components/AddModals/AddApplicant';
 
 const Applicants: FC = () => {
-  const [applicants, setApplicants] = useState<ApplicantTypes[]>([]);
+  const [applicants, setApplicants] = useState<IApplicant[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -93,15 +92,6 @@ const Applicants: FC = () => {
               </TableBody>
             </Table>
           </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[10, 25, 100]}
-            component='div'
-            count={10}
-            rowsPerPage={10}
-            page={10}
-            onChangePage={() => {}}
-            onChangeRowsPerPage={() => {}}
-          />
         </Paper>
       ) : (
         'Loading'

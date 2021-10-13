@@ -7,9 +7,9 @@ import {
   CalendarAlert as CalendarAlertIcon,
   CalendarAccount as CalendarAccountIcon,
 } from 'mdi-material-ui';
-import { DrawerListGroupsOptions } from '../../types';
+import { IDrawerListGroups } from 'types';
 
-export const adminDrawerListGroups: DrawerListGroupsOptions[] = [
+export const adminDrawerListGroups: IDrawerListGroups[] = [
   {
     name: 'Home',
     items: [
