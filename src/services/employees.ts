@@ -16,3 +16,21 @@ export const putEmployee = (_id: string, data: any) => {
 export const deleteEmployee = (_id: string) => {
   return axios.delete(`${baseUrl}/employee/${_id}`);
 };
+
+// Employee information
+
+export const getEmployeeInformation = (_id: string) => {
+  return axios.get(`${baseUrl}/employeeInformations/${_id}`);
+};
+
+export const postEmployeeInformation = (data: any) => {
+  return axios.post(`${baseUrl}/employeeInformations`, data);
+};
+
+export const putEmployeeInformation = (_id: string, data: any) => {
+  return axios.put(`${baseUrl}/employeeInformations/${_id}`, data);
+};
+
+export const deleteEmployeeInformation = (_id: string) => {
+  return axios.delete(`${baseUrl}/employeeInformations/${_id}`);
+};
