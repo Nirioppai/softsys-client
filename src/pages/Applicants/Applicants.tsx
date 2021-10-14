@@ -24,10 +24,12 @@ const Applicants: FC = () => {
 
   useEffect(() => {
     getApplicants()
-      .then((res) => setApplicants(res.data))
+      .then((res) => setApplicants(res.data.data))
       .catch((err) => console.error(err))
       .finally(() => setIsLoaded(true));
   }, []);
+  
+  
 
   return (
     <AdminWrapper>
@@ -52,41 +54,40 @@ const Applicants: FC = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {applicants.map((applicant) => (
-                  <TableRow key={applicant._id}>
-                    <TableCell style={{ fontWeight: 500 }}>
-                      {formatName(applicant)}
-                    </TableCell>
-                    <TableCell>{applicant.position}</TableCell>
-                    <TableCell>
-                      {format(
-                        new Date(
-                          applicant.interviewSchedule.year,
-                          applicant.interviewSchedule.month,
-                          applicant.interviewSchedule.day
-                        ),
-                        'P'
-                      )}
-                    </TableCell>
-                    <TableCell>{applicant.applicationResult}</TableCell>
-                    <TableCell align='right'>
-                      <IconButton
-                        size='small'
-                        aria-label='edit applicant'
-                        style={{ marginRight: '0.25rem' }}
-                      >
-                        <PencilIcon fontSize='small' />
-                      </IconButton>
-                      <IconButton
-                        size='small'
-                        edge='end'
-                        aria-label='delete applicant'
-                      >
-                        <DeleteIcon fontSize='small' />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                {
+                  applicants.length > 0 
+                  ?
+                  applicants.map((applicant) => (
+                    <TableRow key={applicant.applicant[0]._id}>
+                      <TableCell style={{ fontWeight: 500 }}>
+                        {formatName(applicant.applicant[0].name)}
+                      </TableCell>
+                      <TableCell>{applicant.info[0].desiredPosition}</TableCell>
+                      <TableCell>
+                        {applicant.info[0].interviewSchedule}
+                      </TableCell>
+                      <TableCell>{applicant.info[0].applicationResult}</TableCell>
+                      <TableCell align='right'>
+                        <IconButton
+                          size='small'
+                          aria-label='edit applicant'
+                          style={{ marginRight: '0.25rem' }}
+                        >
+                          <PencilIcon fontSize='small' />
+                        </IconButton>
+                        <IconButton
+                          size='small'
+                          edge='end'
+                          aria-label='delete applicant'
+                        >
+                          <DeleteIcon fontSize='small' />
+                        </IconButton>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                  :
+                  <p>There are no applicants as of this moment</p>
+                }
               </TableBody>
             </Table>
           </TableContainer>
