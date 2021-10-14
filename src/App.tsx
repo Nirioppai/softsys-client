@@ -14,6 +14,7 @@ import {
   AdminLogin,
   Home,
   Applicants,
+  ApplicantsRegistration,
   Employees,
   OrganizationalChart,
   Requests,
@@ -42,6 +43,7 @@ const App = () => (
               {/* Auth */}
               <Route exact path='/' component={Portal} />
               <Route exact path='/admin/login' component={AdminLogin} />
+              <Route exact path='/applicant/registration' component={ApplicantsRegistration}/>
 
               {/* Admin */}
               <ProtectedAdminRoute exact path='/home' component={Home} />
