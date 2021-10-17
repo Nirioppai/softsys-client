@@ -8,7 +8,7 @@ import { LoginBase } from 'components';
 const userTypes = [
   {
     label: 'Applicant',
-    link: '#',
+    link: '/applicant/registration',
   },
   {
     label: 'Employee',

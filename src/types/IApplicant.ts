@@ -1,24 +1,23 @@
 export interface IApplicant {
-  _id: string;
-  firstName: string;
-  middleName: string;
-  lastName: string;
-  suffix: string;
-  gender: string;
-  birthDate: {
-    year: number;
-    month: number;
-    day: number;
-  };
-  nationality: string;
-  contactNumber: string;
-  address: string;
-  position: string;
-  interviewSchedule: {
-    year: number;
-    month: number;
-    day: number;
-  };
-  applicationResult: string;
-  applicationRemarks: string;
+  applicant : {
+    _id: string;
+    name: {
+      firstName: string;
+      middleName: string;
+      lastName: string;
+      suffix: string;
+    };
+    gender: string;
+    birthDate: string;
+    nationality: string;
+    contactNumber: string;
+    address: string;
+  }[];
+
+  info: {
+    desiredPosition: string;
+    interviewSchedule: string;
+    applicationResult: string;
+    applicationRemarks: string;
+  }[]
 }
