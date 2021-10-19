@@ -10,5 +10,9 @@ export const postApplicant = (data: any) => {
 }
 
 export const deleteApplicant = (id: any) => {
-  return axios.post(`${baseUrl}/applicant/deleteOne/${id}`);
+  return axios.delete(`${baseUrl}/applicant/deleteOne/${id}`);
+}
+
+export const putApplicant = (data: any, id: any) => {
+  return axios.put(`${baseUrl}/applicant/update/${id}`, data);
 }

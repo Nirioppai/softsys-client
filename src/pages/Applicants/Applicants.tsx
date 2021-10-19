@@ -59,6 +59,7 @@ const Applicants: FC = () => {
   const openDeleteModal = (applicant: IApplicant) => {
     setSelectedApplicant(applicant);
     setDeleteModalOpen(true);
+    console.log(applicant);
   }
 
   const closeDeleteModal = () => setDeleteModalOpen(false);
@@ -119,6 +120,23 @@ const Applicants: FC = () => {
     },
   ];
 
+  const handleDeleteApplicant = async () => {
+    try {
+      if (selectedApplicant) {
+        await deleteApplicant(selectedApplicant._id);
+
+        setApplicants(
+          applicants.filter((applicant) => applicant._id !== selectedApplicant._id)
+        );
+        enqueueSnackbar('Applicant deleted', {variant: 'success'});
+        closeDeleteModal();
+      }
+    }
+    catch (err) {
+      showError(err);
+    }
+  }
+
   useEffect(() => {
     const fetchApplicants = async () => {
       const applicantArray = []
@@ -166,58 +184,18 @@ const Applicants: FC = () => {
       {isLoaded ? (
         <Paper style={{ marginBottom: '1.5rem' }}>
           <Table columns={columns} data={applicants} actionButtonCount={2}/>
-          {/* <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Position</TableCell>
-                  <TableCell>Interview Date</TableCell>
-                  <TableCell>Result</TableCell>
-                  <TableCell
-                    aria-label='actions'
-                    style={{ width: '6rem', minWidth: '6rem' }}
-                  />
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {
-                  applicants.length > 0 
-                  ?
-                  applicants.map((applicant) => (
-                    <TableRow key={applicant.applicant[0]._id}>
-                      <TableCell style={{ fontWeight: 500 }}>
-                        {formatName(applicant.applicant[0].name)}
-                      </TableCell>
-                      <TableCell>{applicant.info[0].desiredPosition}</TableCell>
-                      <TableCell>
-                        {applicant.info[0].interviewSchedule}
-                      </TableCell>
-                      <TableCell>{applicant.info[0].applicationResult}</TableCell>
-                      <TableCell align='right'>
-                        <IconButton
-                          size='small'
-                          aria-label='edit applicant'
-                          style={{ marginRight: '0.25rem' }}
-                        >
-                          <PencilIcon fontSize='small' />
-                        </IconButton>
-                        <IconButton
-                          size='small'
-                          edge='end'
-                          aria-label='delete applicant'
-                        >
-                          <DeleteIcon fontSize='small' />
-                        </IconButton>
-                      </TableCell>
-                    </TableRow>
-                  ))
-                  :
-                  <p>There are no applicants as of this moment</p>
-                }
-              </TableBody>
-            </Table>
-          </TableContainer> */}
+
+          {selectedApplicant && (
+            <>
+              <DeleteDialog 
+                open={deleteModalOpen}
+                onClose={closeDeleteModal}
+                onDelete={handleDeleteApplicant}
+                title='Delete Applicant'
+                itemName={formatName(selectedApplicant.name)}
+              />
+            </>
+          )}
         </Paper>
       ) : (
         'Loading'
