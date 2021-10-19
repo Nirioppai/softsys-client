@@ -1,41 +1,44 @@
 import { FC } from 'react';
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import {
     Button,
     CircularProgress,
     Typography,
     Grid 
-  } from '@material-ui/core';
-  import { Formik, Form, Field } from 'formik';
-  import { TextField, CheckboxWithLabel } from 'formik-material-ui';
-  import * as Yup from 'yup';
-  import { useErrorMessageRenderer } from 'utils';
-  //for inputs that are arrays
-  import { FieldArrayMaker, FieldArrayMakerObjects } from './utils/FieldArrayMaker';
+} from '@material-ui/core';
+import { Formik, Form, Field } from 'formik';
+import { TextField, CheckboxWithLabel } from 'formik-material-ui';
+import * as Yup from 'yup';
+import { useErrorMessageRenderer } from 'utils';
+import { useSnackbar } from 'notistack';
+//for inputs that are arrays
+import { FieldArrayMaker, FieldArrayMakerObjects } from './utils/FieldArrayMaker';
 
-  import { postApplicant } from 'services';
+import { postApplicant } from 'services';
 
 
 const ApplicantsRegistration: FC = () => {
-  
+    // Hooks
     const showError = useErrorMessageRenderer();
+    const { enqueueSnackbar } = useSnackbar();
 
-    const handleSubmit = async (values: any) => {
-      console.log(values)
+    const handleSubmit = async (values: any, submitProps: any) => {
       try {
         const reqBody = {
-          ...values,
-        applicationStatus: '',
-        interviewSchedule: '',
-        applicationResult: '',
-        applicationRemarks: '',
-        fileAttachments: []
-      };
-        const { data } = await postApplicant(reqBody);
-        console.log(data)
-      } catch (err) {
-        console.log(err);
+            ...values,
+          applicationStatus: '',
+          interviewSchedule: '',
+          applicationResult: '',
+          applicationRemarks: '',
+          fileAttachments: []
+        };
+        await postApplicant(reqBody);
+        enqueueSnackbar('Application Form Submitted', { variant: 'success' });
+        submitProps.setSubmitting(false);
+        submitProps.resetForm();
+      }
+      catch (err) {
+          showError(err);
       }
     };
   
@@ -165,7 +168,7 @@ const ApplicantsRegistration: FC = () => {
       validationSchema={validationSchema}
       enableReinitialize
     >
-      {({ touched, values, errors, isSubmitting, resetForm, handleSubmit }) => (
+      {({ values, isSubmitting, resetForm, isValid }) => (
         
           <Form>
               <Typography variant='h2' component='h2'>
@@ -348,11 +351,10 @@ const ApplicantsRegistration: FC = () => {
                 Discard
               </Button>
               <Button 
-                
-                
                 variant='contained' 
                 type='submit' 
                 startIcon={isSubmitting ? <CircularProgress size="0.75rem"/> : undefined}
+                disabled={!isValid || isSubmitting}
               >
                 {isSubmitting ? 'Submitting' : 'Submit'}
               </Button>
