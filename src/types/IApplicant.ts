@@ -19,5 +19,7 @@ export interface IApplicant {
     interviewSchedule: string;
     applicationResult: string;
     applicationRemarks: string;
+    applicantNumber: string;
   }[]
 }
+
