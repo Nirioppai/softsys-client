@@ -8,13 +8,13 @@ import { IEmployee } from 'types';
 import { useErrorMessageRenderer } from 'utils';
 import { putEmployee } from 'services';
 
-interface EditEmployeeModalProps {
+interface PersonalInfoProps {
   setNavigable: (navigable: boolean) => void;
   onSave: (employee: IEmployee) => void;
   employee: IEmployee;
 }
 
-const EditEmployeeModal: FC<EditEmployeeModalProps> = ({
+const PersonalInfo: FC<PersonalInfoProps> = ({
   setNavigable,
   onSave,
   employee,
@@ -289,4 +289,4 @@ const EditEmployeeModal: FC<EditEmployeeModalProps> = ({
   );
 };
 
-export default EditEmployeeModal;
+export default PersonalInfo;

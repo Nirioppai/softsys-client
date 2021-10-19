@@ -28,7 +28,7 @@ import { formatName } from 'utils';
 
 // Tab sections
 import PersonalInfo from './PersonalInfo';
-// import OtherInfo from './OtherInfo';
+import OtherInfo from './OtherInfo';
 
 interface EditEmployeeModalProps extends DialogProps {
   onClose: () => void;
@@ -85,7 +85,13 @@ export const EditEmployeeModal: FC<EditEmployeeModalProps> = ({
     },
     {
       name: 'Other Info',
-      component: 'UNDER CONSTRUCTION',
+      component: (
+        <OtherInfo
+          setNavigable={setNavigable}
+          onSave={onSave}
+          employee={employee}
+        />
+      ),
     },
   ];
 

@@ -1,5 +1,5 @@
 export interface IEmployeeInformation {
-  _id: string;
+  // _id: string;
   employee: string;
   employment: Employment;
   employmentHistory: EmploymentHistory;
