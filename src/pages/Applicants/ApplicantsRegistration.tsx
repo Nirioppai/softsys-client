@@ -11,10 +11,9 @@ import { TextField, CheckboxWithLabel } from 'formik-material-ui';
 import * as Yup from 'yup';
 import { useErrorMessageRenderer } from 'utils';
 import { useSnackbar } from 'notistack';
+import { postApplicant } from 'services';
 //for inputs that are arrays
 import { FieldArrayMaker, FieldArrayMakerObjects } from './utils/FieldArrayMaker';
-
-import { postApplicant } from 'services';
 
 
 const ApplicantsRegistration: FC = () => {

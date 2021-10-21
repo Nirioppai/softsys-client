@@ -2,12 +2,6 @@ import { FC, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import {
   Typography,
-  // Table,
-  // TableBody,
-  // TableCell,
-  // TableContainer,
-  // TableHead,
-  // TableRow,
   Paper,
   IconButton,
   Button,
@@ -22,6 +16,7 @@ import {
 import { getApplicants, deleteApplicant } from 'services';
 import { IApplicant } from 'types';
 import { useSnackbar } from 'notistack';
+import { EditApplicantModal, AddApplicantModal } from './modals';
 
 const Applicants: FC = () => {
   // Data
@@ -120,6 +115,27 @@ const Applicants: FC = () => {
     },
   ];
 
+  const handleAddApplicant = (newApplicant: IApplicant) => {
+    setApplicants(
+      [...applicants, newApplicant].sort((a, b) => 
+        nestedFullNameSorter(a, b, 'name')
+      )
+    );
+    enqueueSnackbar('Applicant Added', {variant: 'success'});
+    closeAddModal();
+  };
+
+  const handleUpdateApplicant = (updatedApplicant: IApplicant) => {
+    const newArray = applicants
+      .map((applicant) =>
+        applicant._id === updatedApplicant._id ? updatedApplicant: applicant
+      )
+      .sort((a, b) => nestedFullNameSorter(a, b, 'name'));
+    setApplicants(newArray);
+    enqueueSnackbar('Applicant updated', {variant: 'success'});
+    closeEditModal();
+  };
+
   const handleDeleteApplicant = async () => {
     try {
       if (selectedApplicant) {
@@ -135,7 +151,7 @@ const Applicants: FC = () => {
     catch (err) {
       showError(err);
     }
-  }
+  };
 
   useEffect(() => {
     const fetchApplicants = async () => {
@@ -182,21 +198,42 @@ const Applicants: FC = () => {
         Applicants
       </Typography>
       {isLoaded ? (
-        <Paper style={{ marginBottom: '1.5rem' }}>
-          <Table columns={columns} data={applicants} actionButtonCount={2}/>
-
-          {selectedApplicant && (
-            <>
-              <DeleteDialog 
-                open={deleteModalOpen}
-                onClose={closeDeleteModal}
-                onDelete={handleDeleteApplicant}
-                title='Delete Applicant'
-                itemName={formatName(selectedApplicant.name)}
-              />
-            </>
-          )}
-        </Paper>
+        <>
+        <Button
+            color='primary'
+            variant='contained'
+            startIcon={<PlusIcon />}
+            onClick={openAddModal}
+            style={{ marginBottom: '1rem' }}
+          >
+            Add
+          </Button>
+          <Paper style={{ marginBottom: '1.5rem' }}>
+            <Table columns={columns} data={applicants} actionButtonCount={2}/>
+            <AddApplicantModal
+              open={addModalOpen}
+              onClose={closeAddModal}
+              onAdd={handleAddApplicant}
+            />
+            {selectedApplicant && (
+              <>
+                <EditApplicantModal 
+                  open={editModalOpen}
+                  onClose={closeEditModal}
+                  onSave={handleUpdateApplicant}
+                  applicant={selectedApplicant}
+                />
+                <DeleteDialog 
+                  open={deleteModalOpen}
+                  onClose={closeDeleteModal}
+                  onDelete={handleDeleteApplicant}
+                  title='Delete Applicant'
+                  itemName={formatName(selectedApplicant.name)}
+                />
+              </>
+            )}
+          </Paper>
+        </>  
       ) : (
         'Loading'
       )}

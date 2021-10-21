@@ -16,6 +16,8 @@ export interface IApplicant {
   applicationResult: string;
   applicationRemarks: string;
   applicantNumber: string;
-
+  __v?: number;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
