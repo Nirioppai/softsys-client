@@ -27,30 +27,176 @@ export const AddApplicantModal: FC<AddApplicantModalProps> = ({
     ...rest
 }) => {
     const showError = useErrorMessageRenderer();
-    const { enqueueSnackbar } = useSnackbar();
 
     const handleSubmit = async (values: any, submitProps: any) => {
         try {
             const reqBody = {
                 ...values,
-              applicationStatus: '',
-              interviewSchedule: '',
-              applicationResult: '',
-              applicationRemarks: '',
-              fileAttachments: []
+                gender: '',
+                dateOfBirth: '',
+                contactNumber: {
+                    mobileNumber: [''],
+                    landLineNumber: [''],
+                    emailAddress: ['']
+                },
+                address: {
+                    homeNumOrLotNum: '',
+                    streetName: '',
+                    districtOrTown: '',
+                    zipCode: '',
+                    province: '',
+                    country: ''
+                },
+                nationality: '',
+                language: [''],
+                skills: [''],
+                achievements: [''],
+                careerHighlights : [''],
+                careerBackground : [
+                    {
+                        company: '',
+                        companyAddress:'',
+                        position: '',
+                        yearStarted: '',
+                        yearEnded: ''
+                    }
+                ],
+                educationalBackground: [
+                    {
+                        school: '',
+                        schoolAddress: '',
+                        course: '',
+                        academicAward: '',
+                        yearStarted: '',
+                        yearEnded: ''
+                    }
+                ],
+                characterReferences: [
+                    {
+                        name: '',
+                        company: '',
+                        occupation: '',
+                        contact: {
+                            mobile: '',
+                            email: ''
+                        }
+                    }
+                ],
+                applicationStatus: '',
+                interviewSchedule: '',
+                applicationResult: '',
+                applicationRemarks: '',
+                fileAttachments: []
             };
-            await postApplicant(reqBody);
-            enqueueSnackbar('Applicant Added', { variant: 'success' });
-            submitProps.setSubmitting(false);
-            submitProps.resetForm();
+            const result = await postApplicant(reqBody);
+            const data  = {
+                name: values.name,
+                desiredPosition: values.desiredPosition,
+                applicantNumber: result.data.data.applicantNumber,
+                interviewSchedule: '',
+                applicationResult: '',
+            } as IApplicant;
+            onAdd(data);
           }
           catch (err) {
               showError(err);
           }
     };
 
+    const validationSchema = Yup.object().shape({
+        name: Yup.object().shape({
+          firstName: Yup.string().required('Required'),
+          middleName: Yup.string(),
+          lastName: Yup.string().required('Required'),
+          suffix: Yup.string(),
+        }),
+        desiredPosition: Yup.string().required('Required'),
+      });
+
     return (
-        <h1>TEST</h1>
+        <Formik
+            initialValues={{
+                name: {
+                firstName: '',
+                middleName: '',
+                lastName: '',
+                suffix: '',
+                },
+                desiredPosition: '',
+            }}
+            onSubmit={handleSubmit}
+            validationSchema={validationSchema}
+            enableReinitialize
+            >
+            {({ touched, errors, isSubmitting, resetForm }) => (
+                <Dialog
+                {...rest}
+                onClose={() => {
+                    resetForm();
+                    onClose();
+                }}
+                disableBackdropClick={isSubmitting}
+                disableEscapeKeyDown={isSubmitting}
+                >
+                <Form>
+                    <DialogTitle disableTypography>
+                    <Typography variant='h3' component='h2'>
+                        Add Employee
+                    </Typography>
+                    </DialogTitle>
+                    <DialogContent>
+                    <Field
+                        component={TextField}
+                        autoFocus
+                        required
+                        name='name.firstName'
+                        autoComplete='given-name'
+                        label='First Name'
+                    />
+                    <Field
+                        component={TextField}
+                        name='name.middleName'
+                        autoComplete='additional-name'
+                        label='Middle Name'
+                    />
+                    <Field
+                        component={TextField}
+                        required
+                        name='name.lastName'
+                        autoComplete='family-name'
+                        label='Last Name'
+                    />
+                    <Field
+                        component={TextField}
+                        name='name.suffix'
+                        autoComplete='honorific-suffix'
+                        label='Suffix'
+                    />
+                    <Field
+                        component={TextField}
+                        required
+                        name='desiredPosition'
+                        label='Desired Position'
+                    />
+                    </DialogContent>
+                    <DialogActions>
+                    <Button
+                        onClick={() => {
+                        resetForm();
+                        onClose();
+                        }}
+                        disabled={isSubmitting}
+                    >
+                        Discard
+                    </Button>
+                    <Button variant='contained' type='submit' disabled={isSubmitting}>
+                        Add
+                    </Button>
+                    </DialogActions>
+                </Form>
+                </Dialog>
+            )}
+        </Formik>
     )
 
 }

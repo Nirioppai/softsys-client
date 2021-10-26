@@ -13,10 +13,10 @@ import {
   nestedFullNameSorter,
   useErrorMessageRenderer,
 } from 'utils';
-import { getApplicants, deleteApplicant } from 'services';
+import { getApplicants, deleteApplicant, putApplicant } from 'services';
 import { IApplicant } from 'types';
 import { useSnackbar } from 'notistack';
-import { EditApplicantModal, AddApplicantModal } from './modals';
+import { EditApplicantModal, AddApplicantModal, } from './modals';
 
 const Applicants: FC = () => {
   // Data
@@ -54,7 +54,6 @@ const Applicants: FC = () => {
   const openDeleteModal = (applicant: IApplicant) => {
     setSelectedApplicant(applicant);
     setDeleteModalOpen(true);
-    console.log(applicant);
   }
 
   const closeDeleteModal = () => setDeleteModalOpen(false);

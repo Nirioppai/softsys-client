@@ -26,10 +26,11 @@ export const ApplicantInfo: FC<ApplicantInfoProps> = ({
     const { _id, __v, createdAt, updatedAt, ...initialValues } = applicant;
 
     const handleSubmit = async (values: any) => {
+        console.log(values)
         try {
             setNavigable(false);
 
-            const { data } = await putApplicant(_id, { ...values, type: 'applicant'});
+            const { data } = await putApplicant({ ...values}, _id);
             onSave(data.data)
         }
         catch (err) {
@@ -260,6 +261,11 @@ export const ApplicantInfo: FC<ApplicantInfoProps> = ({
                         false
                         )
                     }
+                    <Box display='flex' justifyContent='flex-end'>
+                        <Button type='submit' variant='contained'>
+                            Save
+                        </Button>
+                    </Box>
                 </Form>
             )}
         </Formik>

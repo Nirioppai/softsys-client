@@ -145,9 +145,6 @@ export const EditApplicantModal: FC<EditApplicantModalProps> = ({
               </TabPanel>
             ))}
           </TabContext>
-          <Button variant='contained' type='submit' >
-            Save
-          </Button>
         </Paper>
       </Container>
     </Dialog>
