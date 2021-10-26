@@ -25,13 +25,12 @@ export const ApplicantInfo: FC<ApplicantInfoProps> = ({
 
     const { _id, __v, createdAt, updatedAt, ...initialValues } = applicant;
 
-    const handleSubmit = async (values: any) => {
-        console.log(values)
+    const handleSubmit = async (value: any) => {
         try {
             setNavigable(false);
 
-            const { data } = await putApplicant({ ...values}, _id);
-            onSave(data.data)
+            await putApplicant(_id, { ...value});
+            onSave(value);
         }
         catch (err) {
             showError(err);
@@ -92,6 +91,7 @@ export const ApplicantInfo: FC<ApplicantInfoProps> = ({
               email: Yup.string().email('Must be a valid email'),
           }),
         })),
+
     });
 
     return (
@@ -103,6 +103,19 @@ export const ApplicantInfo: FC<ApplicantInfoProps> = ({
         >
             {({ touched, errors, isSubmitting, values }) => (
                 <Form>
+                    <Typography
+                        variant='h4'
+                        component='h3'
+                        style={{ marginBottom: '1rem' }}
+                    >
+                        Position
+                    </Typography>
+                    <Field
+                        component={TextField}
+                        required
+                        name='desiredPosition'
+                        label='Desired Position'
+                    />
                     {/* Basic information */}
                     <Typography
                         variant='h4'

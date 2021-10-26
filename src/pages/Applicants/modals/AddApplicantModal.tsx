@@ -141,7 +141,7 @@ export const AddApplicantModal: FC<AddApplicantModalProps> = ({
                 <Form>
                     <DialogTitle disableTypography>
                     <Typography variant='h3' component='h2'>
-                        Add Employee
+                        Add Applicant
                     </Typography>
                     </DialogTitle>
                     <DialogContent>

@@ -234,7 +234,7 @@ const Applicants: FC = () => {
           </Paper>
         </>  
       ) : (
-        'Loading'
+        <PageLoader />
       )}
     </AdminWrapper>
   );
