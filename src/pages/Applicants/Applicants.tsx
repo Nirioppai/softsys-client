@@ -13,7 +13,7 @@ import {
   nestedFullNameSorter,
   useErrorMessageRenderer,
 } from 'utils';
-import { getApplicants, deleteApplicant, putApplicant } from 'services';
+import { getApplicants, deleteApplicant } from 'services';
 import { IApplicant } from 'types';
 import { useSnackbar } from 'notistack';
 import { EditApplicantModal, AddApplicantModal, } from './modals';

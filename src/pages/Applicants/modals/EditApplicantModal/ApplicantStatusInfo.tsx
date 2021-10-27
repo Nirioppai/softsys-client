@@ -2,14 +2,11 @@ import { FC } from 'react';
 import { Button, Typography, Box } from '@material-ui/core';
 import { Formik, Form, Field } from 'formik';
 import { TextField } from 'formik-material-ui';
-import { KeyboardDatePicker } from 'formik-material-ui-pickers';
-import * as Yup from 'yup';
 import { IApplicant } from 'types';
 import { useErrorMessageRenderer } from 'utils';
 import { 
     putApplicant 
 } from 'services';
-// put other apis??
 
 interface ApplicantStatusInfoProps {
     setNavigable: (navigable: boolean) => void;
@@ -30,9 +27,8 @@ export const ApplicantStatusInfo: FC<ApplicantStatusInfoProps> = ({
     const handleSubmit = async (value: any) => {
         try {
             setNavigable(false);
-
-            await putApplicant(_id, { ...value});
-            onSave(value);
+            const result = await putApplicant(_id, { ...value});
+            onSave({ _id: result.data.data._id, ...value });
         }
         catch (err) {
             showError(err);
@@ -42,23 +38,12 @@ export const ApplicantStatusInfo: FC<ApplicantStatusInfoProps> = ({
         }
     };
 
-    const validationSchema = Yup.object().shape({
-        applicantStatus: Yup.string().required('Required'),
-        interviewSchedule: Yup.string(),
-        applicationResult: Yup.string().required('Required'),
-        applicationRemarks: Yup.string(),
-        fileAttachments: Yup.array().of(Yup.string())
-       
-    });
-
     return (
         <Formik
             initialValues={initialValues}
             onSubmit={handleSubmit}
-            validationSchema={validationSchema}
-            enableReinitialize
         >
-            {({ touched, errors, isSubmitting, values }) => (
+            {() => (
                 <Form>
                     <Typography
                         variant='h4'
@@ -116,7 +101,6 @@ export const ApplicantStatusInfo: FC<ApplicantStatusInfoProps> = ({
                         label='Application Remarks'
                         style={{ marginBottom: '1rem' }}
                     />
-                    
                     <Box display='flex' justifyContent='flex-end'>
                         <Button type='submit' variant='contained'>
                             Save

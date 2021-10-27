@@ -13,7 +13,6 @@ import { TextField } from 'formik-material-ui';
 import * as Yup from 'yup';
 import { IApplicant } from 'types';
 import { useErrorMessageRenderer } from 'utils';
-import { useSnackbar } from 'notistack';
 import { postApplicant } from 'services';
 
 interface AddApplicantModalProps extends DialogProps {
@@ -90,13 +89,16 @@ export const AddApplicantModal: FC<AddApplicantModalProps> = ({
             };
             const result = await postApplicant(reqBody);
             const data  = {
-                name: values.name,
+                _id: result.data.data._id,
+                name: result.data.data.name,
                 desiredPosition: values.desiredPosition,
                 applicantNumber: result.data.data.applicantNumber,
                 interviewSchedule: '',
                 applicationResult: '',
             } as IApplicant;
             onAdd(data);
+            submitProps.setSubmitting(false);
+            submitProps.resetForm();
           }
           catch (err) {
               showError(err);
@@ -128,7 +130,7 @@ export const AddApplicantModal: FC<AddApplicantModalProps> = ({
             validationSchema={validationSchema}
             enableReinitialize
             >
-            {({ touched, errors, isSubmitting, resetForm }) => (
+            {({ isSubmitting, resetForm }) => (
                 <Dialog
                 {...rest}
                 onClose={() => {
@@ -182,8 +184,8 @@ export const AddApplicantModal: FC<AddApplicantModalProps> = ({
                     <DialogActions>
                     <Button
                         onClick={() => {
-                        resetForm();
-                        onClose();
+                            resetForm();
+                            onClose();
                         }}
                         disabled={isSubmitting}
                     >

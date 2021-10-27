@@ -18,7 +18,6 @@ import {
     Container,
     Box,
     Paper,
-    Button
   } from '@material-ui/core';
 import { TransitionProps } from '@material-ui/core/transitions';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
@@ -86,7 +85,7 @@ export const EditApplicantModal: FC<EditApplicantModalProps> = ({
       )
     },
     {
-      name: 'Applicant Status Info',
+      name: 'Application Status',
       component: (
         <ApplicantStatusInfo 
           setNavigable={setNavigable}

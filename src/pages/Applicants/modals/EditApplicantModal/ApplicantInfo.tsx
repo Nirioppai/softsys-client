@@ -29,8 +29,8 @@ export const ApplicantInfo: FC<ApplicantInfoProps> = ({
         try {
             setNavigable(false);
 
-            await putApplicant(_id, { ...value});
-            onSave(value);
+            const result =await putApplicant(_id, { ...value});
+            onSave({ _id: result.data.data._id, ...value });
         }
         catch (err) {
             showError(err);
@@ -101,7 +101,7 @@ export const ApplicantInfo: FC<ApplicantInfoProps> = ({
             validationSchema={validationSchema}
             enableReinitialize
         >
-            {({ touched, errors, isSubmitting, values }) => (
+            {({ values }) => (
                 <Form>
                     <Typography
                         variant='h4'
