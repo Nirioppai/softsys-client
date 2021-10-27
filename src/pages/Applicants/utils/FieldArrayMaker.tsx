@@ -16,7 +16,7 @@ export const FieldArrayMaker = (dataArray: Array<string>, name: string, label: s
 
                 {dataArray.map((_, index) => (
                     <Grid container key={index}>
-                    <Grid item xs={12} sm='auto'>
+                    <Grid item xs={12} sm={9} md={10} lg={11} xl={11}>
                         <Field
                         component={TextField}
                         required={required}
@@ -24,7 +24,10 @@ export const FieldArrayMaker = (dataArray: Array<string>, name: string, label: s
                         label={label}
                         />
                     </Grid>
-                    <Grid item xs={12} sm='auto'>
+                    <Grid item 
+                        xs={12} sm={3} md={2} lg={1} xl={1}
+                        style={{display: 'flex', marginBottom: '1rem'}}
+                    >
                         <Button onClick={() => remove(index)}>Delete</Button>
                     </Grid>
                     </Grid>
@@ -34,6 +37,7 @@ export const FieldArrayMaker = (dataArray: Array<string>, name: string, label: s
                     <Button 
                         variant='contained'
                         onClick={() => push('')}
+                        style={{ marginBottom: '1rem'}}   
                     >
                         Add {label}
                     </Button>
@@ -62,9 +66,12 @@ export const FieldArrayMakerObjects = (
             <React.Fragment>
 
             {dataArray.map((_, index) => (
-                <Grid container key={index}>
+                <Grid container key={index}
+                >
                     {arrayOfFields.map((fieldName, i) => (
-                        <Grid item xs={12} sm='auto' key={index + fieldName}>
+                        <Grid item 
+                            xs={12} sm={12}
+                            key={index + fieldName}>
                             <Field
                                 component={TextField}
                                 required={fieldName === "academicAward" ? false : required}
@@ -74,8 +81,8 @@ export const FieldArrayMakerObjects = (
                         </Grid>
                     ))
                     }
-                    <Grid item xs={12} sm="auto">
-                        <Button onClick={() => remove(index)}>Delete</Button>
+                    <Grid item xs={12} sm={12} style={{display: 'flex', marginBottom: '1rem'}}>
+                        <Button onClick={() => remove(index)} >Delete</Button>
                     </Grid>
                 </Grid>
             ))}
@@ -83,6 +90,7 @@ export const FieldArrayMakerObjects = (
                 <Button 
                     variant='contained'
                     onClick={() => push('')}
+                    style={{ marginBottom: '1rem'}}   
                 >
                     Add {parentLabel}
                 </Button>
@@ -92,3 +100,5 @@ export const FieldArrayMakerObjects = (
         </FieldArray>
     )
 }
+
+// add a parameter that indicates the number of width it takes up ??

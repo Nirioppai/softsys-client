@@ -14,6 +14,8 @@ import { useSnackbar } from 'notistack';
 import { postApplicant } from 'services';
 //for inputs that are arrays
 import { FieldArrayMaker, FieldArrayMakerObjects } from './utils/FieldArrayMaker';
+// CSS
+import {containerStyle} from './ApplicantRegistrationCSS'
 
 
 const ApplicantsRegistration: FC = () => {
@@ -93,7 +95,6 @@ const ApplicantsRegistration: FC = () => {
         }),
       })),
     });
-  
 
   return (
     <>
@@ -169,21 +170,24 @@ const ApplicantsRegistration: FC = () => {
     >
       {({ values, isSubmitting, resetForm, isValid }) => (
         
-          <Form>
-              <Typography variant='h2' component='h2'>
+          <Form style={containerStyle}>
+              <Typography variant='h2' component='h2'
+                style={{ margin: '1rem 0' }}
+              >
                 Application Form
               </Typography>
 
               <Field
                 component={TextField}
+                autoFocus
                 required
                 name='desiredPosition'
                 label='Desired Position'
+                style={{ marginBottom: '1rem' }}
               />
 
               <Field
                 component={TextField}
-                autoFocus
                 required
                 name='name.firstName'
                 autoComplete='given-name'
@@ -228,58 +232,48 @@ const ApplicantsRegistration: FC = () => {
               {FieldArrayMaker(values.contactNumber.emailAddress, 'contactNumber.emailAddress', 'Email Address', true)}
 
               <h3>Address</h3>
-              <Grid container>
-                <Grid item>
                   <Field
+                    xs={12} sm='auto'
                     component={TextField}
                     required
                     name='address.homeNumOrLotNum'
                     label='Home Number/Lot Number'
                   />
-                </Grid>
-                <Grid item>
                   <Field
+                    xs={12} sm='auto'
                     component={TextField}
                     required
                     name='address.streetName'
                     label='Street'
                   />
-                </Grid>
-                <Grid item>
                   <Field
+                    xs={12} sm='auto'
                     component={TextField}
                     required
                     name='address.districtOrTown'
                     label='District/Town'
                   />
-                </Grid>
-              </Grid>
-              <Grid container>
-              <Grid item>
                   <Field
+                    xs={12} sm='auto'
                     component={TextField}
                     required
                     name='address.zipCode'
                     label='Zip Code'
                   />
-                </Grid>
-                <Grid item>
                   <Field
+                    xs={12} sm='auto'
                     component={TextField}
                     required
                     name='address.province'
                     label='Province'
                   />
-                </Grid>
-                <Grid item>
                   <Field
+                    xs={12} sm='auto'
                     component={TextField}
                     required
                     name='address.country'
                     label='Country'
                   />
-                </Grid>
-              </Grid>
 
               <Field
                 component={TextField}
@@ -341,22 +335,24 @@ const ApplicantsRegistration: FC = () => {
                 Label={{label: 'I accept the Terms and Conditions'}}
               />
 
-              <Button
-                onClick={() => {
-                  resetForm();
-                }}
-                disabled={isSubmitting}
-              >
-                Discard
-              </Button>
-              <Button 
-                variant='contained' 
-                type='submit' 
-                startIcon={isSubmitting ? <CircularProgress size="0.75rem"/> : undefined}
-                disabled={!isValid || isSubmitting}
-              >
-                {isSubmitting ? 'Submitting' : 'Submit'}
-              </Button>
+              <Grid container style={{justifyContent: 'flex-end', marginBottom: '1rem'}}>
+                <Button
+                  onClick={() => {
+                    resetForm();
+                  }}
+                  disabled={isSubmitting}
+                >
+                  Discard
+                </Button>
+                <Button 
+                  variant='contained' 
+                  type='submit' 
+                  startIcon={isSubmitting ? <CircularProgress size="0.75rem"/> : undefined}
+                  disabled={!isValid || isSubmitting}
+                >
+                  {isSubmitting ? 'Submitting' : 'Submit'}
+                </Button>
+              </Grid>
 
           </Form>
 

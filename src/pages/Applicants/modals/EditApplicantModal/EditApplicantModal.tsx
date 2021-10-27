@@ -29,6 +29,7 @@ import { formatName } from 'utils';
 
 // Applicant Info Fields
 import { ApplicantInfo } from "./ApplicantInfo";
+import { ApplicantStatusInfo } from './ApplicantStatusInfo'
 
 interface EditApplicantModalProps extends DialogProps {
   onClose: () => void;
@@ -78,6 +79,16 @@ export const EditApplicantModal: FC<EditApplicantModalProps> = ({
       name: 'Applicant Info',
       component: (
         <ApplicantInfo 
+          setNavigable={setNavigable}
+          onSave={onSave}
+          applicant={applicant}
+        />
+      )
+    },
+    {
+      name: 'Applicant Status Info',
+      component: (
+        <ApplicantStatusInfo 
           setNavigable={setNavigable}
           onSave={onSave}
           applicant={applicant}
