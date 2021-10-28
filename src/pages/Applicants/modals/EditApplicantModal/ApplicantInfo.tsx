@@ -8,7 +8,6 @@ import { IApplicant } from 'types';
 import { useErrorMessageRenderer } from 'utils';
 import { putApplicant } from 'services';
 import { FieldArrayMaker, FieldArrayMakerObjects } from "./../../utils/FieldArrayMaker";
-
 interface ApplicantInfoProps {
     setNavigable: (navigable: boolean) => void;
     onSave: (applicant: IApplicant) => void;
@@ -170,58 +169,43 @@ export const ApplicantInfo: FC<ApplicantInfoProps> = ({
                     {FieldArrayMaker(values.contactNumber.emailAddress, 'contactNumber.emailAddress', 'Email Address', true)}
 
                     <h3>Address</h3>
-                    <Grid container>
-                        <Grid item>
                         <Field
                             component={TextField}
                             required
                             name='address.homeNumOrLotNum'
                             label='Home Number/Lot Number'
                         />
-                        </Grid>
-                        <Grid item>
                         <Field
                             component={TextField}
                             required
                             name='address.streetName'
                             label='Street'
                         />
-                        </Grid>
-                        <Grid item>
                         <Field
                             component={TextField}
                             required
                             name='address.districtOrTown'
                             label='District/Town'
                         />
-                        </Grid>
-                    </Grid>
-                    <Grid container>
-                    <Grid item>
                         <Field
                             component={TextField}
                             required
                             name='address.zipCode'
                             label='Zip Code'
                         />
-                        </Grid>
-                        <Grid item>
                         <Field
                             component={TextField}
                             required
                             name='address.province'
                             label='Province'
                         />
-                        </Grid>
-                        <Grid item>
                         <Field
                             component={TextField}
                             required
                             name='address.country'
                             label='Country'
+                            style={{marginBottom:'1.5rem'}}
                         />
-                        </Grid>
-                    </Grid>
 
                     <Field
                         component={TextField}

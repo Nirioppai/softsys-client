@@ -5,10 +5,3 @@ export const containerStyle: CSS.Properties = {
     height: '100%',
     margin: 'auto',
 }
-
-export const gridInputArray: CSS.Properties = {
-    width:'100%'
-}
-
-
-// css ??

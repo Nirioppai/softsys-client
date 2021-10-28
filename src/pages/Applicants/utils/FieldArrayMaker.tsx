@@ -14,7 +14,7 @@ export const FieldArrayMaker = (dataArray: Array<string>, name: string, label: s
             {({push, remove}) => (
                 <React.Fragment>
                 <Grid item>
-                    <Typography variant="body2">{label}:</Typography>
+                    <Typography variant="body1" style={{marginBottom:'0.5rem'}}>{label}:</Typography>
                 </Grid>
 
                 {dataArray.map((_, index) => (
@@ -24,7 +24,6 @@ export const FieldArrayMaker = (dataArray: Array<string>, name: string, label: s
                         component={TextField}
                         required={required}
                         name={`${name}[${index}]`}
-                        label={label}
                         />
                     </Grid>
                     {
@@ -87,7 +86,7 @@ export const FieldArrayMakerObjects = (
                     ))
                     }
                     {
-                        dataArray.length > 1 && <Grid item xs={12} sm={12} style={{display: 'flex', marginBottom: '1rem'}}>
+                        dataArray.length > 1 && <Grid item xs={12} sm={12}>
                             <Button onClick={() => remove(index)} >Delete</Button>
                         </Grid>
                     }
@@ -107,5 +106,3 @@ export const FieldArrayMakerObjects = (
         </FieldArray>
     )
 }
-
-// add a parameter that indicates the number of width it takes up ??

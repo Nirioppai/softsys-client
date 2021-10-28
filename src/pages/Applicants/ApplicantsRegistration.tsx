@@ -16,7 +16,7 @@ import { postApplicant } from 'services';
 //for inputs that are arrays
 import { FieldArrayMaker, FieldArrayMakerObjects } from './utils/FieldArrayMaker';
 // CSS
-import {containerStyle} from './ApplicantRegistrationCSS'
+import { containerStyle } from './ApplicantRegistrationCSS'
 
 
 const ApplicantsRegistration: FC = () => {
@@ -275,6 +275,7 @@ const ApplicantsRegistration: FC = () => {
                       required
                       name='address.country'
                       label='Country'
+                      style={{marginBottom:'1.5rem'}}
                     />
 
                 <Field

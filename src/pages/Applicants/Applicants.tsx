@@ -87,7 +87,7 @@ const Applicants: FC = () => {
     },
     {
       Header: 'Result',
-      accessor: 'applicantResult',
+      accessor: 'applicationResult',
     },
     {
       ariaLabel: 'actions',
