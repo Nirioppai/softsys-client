@@ -2,7 +2,7 @@ import React, { useState, useEffect, ChangeEvent } from 'react';
 import TableRender from './TableRender';
 import { Select, FormControl, MenuItem } from '@material-ui/core';
 import type { DataType, EmployeeRecord } from './MonthlyData';
-
+import { getDailyAttendance } from '../services';
 //data need
 
 // data about date
@@ -23,6 +23,15 @@ interface Overview {
   }[];
   renderData: EmployeeRecord[];
   isLoaded: boolean;
+  parameters: {
+    params: {
+      day?: number;
+      month: string;
+      year: string;
+      attendance: string;
+      employee?: string;
+    };
+  };
 }
 
 export default function TableData() {
@@ -32,23 +41,55 @@ export default function TableData() {
     currentColumn: [],
     renderData: [],
     isLoaded: false,
+    parameters: {
+      params: {
+        month: '',
+        year: '',
+        attendance: '',
+        employee: '',
+      },
+    },
   });
 
   useEffect(() => {
     let m = new Date();
-    let monthNum = m.getMonth();
+    let month = m.getMonth();
+    let year = m.getFullYear();
+    let daysInCurrentMonth = new Date(year, month, 0).getDate();
     setState((prevState) => ({
       ...prevState,
-      month: dates[0].name,
-      monthData: dates[0],
-      currentColumn: YearColumn.months[0].columns,
-      currentMonth: YearColumn.months[0].name,
-      renderData: dataToRender[0].employeeRecords,
+      month: dates[month].name,
+      monthData: dates[month],
+      currentColumn: YearColumn.months[month].columns.slice(0,daysInCurrentMonth),
+      currentMonth: YearColumn.months[month].name,
+      parameters: {
+        params: {
+          month: `${dates[month].name}`,
+          year: `${year}`,
+          attendance: 'attendance-overview',
+        },
+      },
     }));
-
-    //this one should be based on the current month when 1st visited
-    //pero gagawin ko lang munang january para fit sa data na ginawa ko hehe
   }, []);
+
+  useEffect(() => {
+    const fetch = async () => {
+      console.log(state);
+      console.log(state.parameters);
+      const fetchDailyAttendance = await getDailyAttendance(state.parameters);
+      console.log(fetchDailyAttendance)
+      if (fetchDailyAttendance) {
+        setState((prevState) => ({
+          ...prevState,
+          renderData: fetchDailyAttendance.data.data,
+        }));
+      }
+    };
+
+    if (state.parameters.params.month) {
+      fetch();
+    }
+  }, [state.parameters]);
 
   useEffect(() => {
     setState((prevState) => ({ ...prevState, isLoaded: true }));
@@ -68,6 +109,7 @@ export default function TableData() {
     //   }));
     // }
   }, [state.month]);
+
   const handleChange = (e: ChangeEvent<{ value: unknown }>, state: string) => {
     setState((prevState) => ({
       ...prevState,

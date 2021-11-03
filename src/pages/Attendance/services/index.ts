@@ -1,1 +1,1 @@
-export { default as chuchu } from './DailyAttendance';
+export {getDailyAttendance} from './DailyAttendance';

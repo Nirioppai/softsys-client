@@ -1,1 +1,1 @@
-export { default } from './DailyAttendance';
+export {getDailyAttendance} from './DailyAttendance';
