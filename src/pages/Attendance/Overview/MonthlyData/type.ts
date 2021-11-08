@@ -4,19 +4,19 @@ export interface DataType {
 }
 
 export interface EmployeeRecord {
-  employee: {
-    name: string;
-  };
-  date: {
-    month: string;
-    year: string;
-  };
-  monthRecord: {
-    day: string;
-    timeIn: string;
-    timeOut: string;
-    workStatus: string;
-    attendanceStatus: string;
-    note: string;
-  }[];
+  _id?: string;
+  employee: string;
+  month: string;
+  year: string;
+  monthRecord: MonthRecord[];
+}
+
+export interface MonthRecord {
+  _id?: string;
+  day: string;
+  timeIn: string;
+  timeOut: string;
+  workStatus: string;
+  attendanceStatus: string;
+  note?: string;
 }

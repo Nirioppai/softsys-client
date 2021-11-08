@@ -1,7 +1,7 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import TableRender from './TableRender';
 import { Select, FormControl, MenuItem } from '@material-ui/core';
-import type { DataType, EmployeeRecord } from './MonthlyData';
+import type { DataType, EmployeeRecord, MonthRecord } from './MonthlyData';
 import { getDailyAttendance } from '../services';
 //data need
 
@@ -9,7 +9,7 @@ import { getDailyAttendance } from '../services';
 import { dates } from './Dates';
 
 //data about the data to render
-import { dataToRender } from './MonthlyData';
+// import { dataToRender } from './MonthlyData';
 
 //data about the columns when rendering
 import { YearColumn } from './MonthlyColumn';
@@ -21,7 +21,8 @@ interface Overview {
     Header: string;
     accessor: any;
   }[];
-  renderData: EmployeeRecord[];
+  renderData: EmployeeRecord;
+  record: MonthRecord[];
   isLoaded: boolean;
   parameters: {
     params: {
@@ -39,7 +40,13 @@ export default function TableData() {
     month: '',
     monthData: null,
     currentColumn: [],
-    renderData: [],
+    renderData: {
+      employee: '',
+      month: '',
+      year: '',
+      monthRecord: [],
+    },
+    record: [],
     isLoaded: false,
     parameters: {
       params: {
@@ -56,44 +63,43 @@ export default function TableData() {
     let month = m.getMonth();
     let year = m.getFullYear();
     let daysInCurrentMonth = new Date(year, month, 0).getDate();
+
+    let parametersVariable: any = {
+      params: {
+        month: `${dates[month].name}`,
+        year: `${year}`,
+        attendance: 'attendance-overview',
+      },
+    };
+
     setState((prevState) => ({
       ...prevState,
       month: dates[month].name,
       monthData: dates[month],
-      currentColumn: YearColumn.months[month].columns.slice(0,daysInCurrentMonth),
+      currentColumn: YearColumn.months[month].columns.slice(
+        0,
+        daysInCurrentMonth
+      ),
       currentMonth: YearColumn.months[month].name,
-      parameters: {
-        params: {
-          month: `${dates[month].name}`,
-          year: `${year}`,
-          attendance: 'attendance-overview',
-        },
-      },
+      parameters: parametersVariable,
     }));
-  }, []);
-
-  useEffect(() => {
     const fetch = async () => {
-      console.log(state);
-      console.log(state.parameters);
-      const fetchDailyAttendance = await getDailyAttendance(state.parameters);
-      console.log(fetchDailyAttendance)
-      if (fetchDailyAttendance) {
+      const fetchDailyAttendance = await getDailyAttendance(parametersVariable);
+      console.log(fetchDailyAttendance);
+      // console.log(fetchDailyAttendance)
+      if (fetchDailyAttendance.data.data) {
         setState((prevState) => ({
           ...prevState,
           renderData: fetchDailyAttendance.data.data,
+          record: fetchDailyAttendance.data.data[0].monthRecord,
+          isLoaded: true,
         }));
       }
     };
 
-    if (state.parameters.params.month) {
-      fetch();
-    }
-  }, [state.parameters]);
-
-  useEffect(() => {
-    setState((prevState) => ({ ...prevState, isLoaded: true }));
-  }, [state.renderData]);
+    fetch();
+    // setState((prevState) => ({ ...prevState, isLoaded: true }));
+  }, []);
 
   useEffect(() => {
     // state.month !== currentMonth;
@@ -116,7 +122,8 @@ export default function TableData() {
       [state]: e.target.value,
     }));
   };
-  const { month, currentColumn, renderData, isLoaded } = state;
+
+  const { month, currentColumn, renderData, isLoaded, record } = state;
   return isLoaded ? (
     <>
       <FormControl>
@@ -134,7 +141,10 @@ export default function TableData() {
           ))}
         </Select>
       </FormControl>
-      <TableRender columns={currentColumn} data={renderData} />
+
+      {currentColumn ? (
+        <TableRender columns={currentColumn} data={renderData} />
+      ) : null}
     </>
   ) : null;
 }

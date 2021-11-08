@@ -5,7 +5,7 @@ export const YearColumn = {
       columns: [
         {
           Header: 'Name',
-          accessor: (row: any) => row.employee.name,
+          accessor: (row: any) => row.employee,
         },
         {
           Header: '1',
@@ -138,7 +138,7 @@ export const YearColumn = {
       columns: [
         {
           Header: 'Name',
-          accessor: (row: any) => row.employee.name,
+          accessor: (row: any) => row.employee,
         },
         {
           Header: '1',
@@ -271,7 +271,7 @@ export const YearColumn = {
       columns: [
         {
           Header: 'Name',
-          accessor: (row: any) => row.employee.name,
+          accessor: (row: any) => row.employee,
         },
         {
           Header: '1',
@@ -404,7 +404,7 @@ export const YearColumn = {
       columns: [
         {
           Header: 'Name',
-          accessor: (row: any) => row.employee.name,
+          accessor: (row: any) => row.employee,
         },
         {
           Header: '1',
@@ -537,7 +537,7 @@ export const YearColumn = {
       columns: [
         {
           Header: 'Name',
-          accessor: (row: any) => row.employee.name,
+          accessor: (row: any) => row.employee,
         },
         {
           Header: '1',
@@ -670,7 +670,7 @@ export const YearColumn = {
       columns: [
         {
           Header: 'Name',
-          accessor: (row: any) => row.employee.name,
+          accessor: (row: any) => row.employee,
         },
         {
           Header: '1',
@@ -803,7 +803,7 @@ export const YearColumn = {
       columns: [
         {
           Header: 'Name',
-          accessor: (row: any) => row.employee.name,
+          accessor: (row: any) => row.employee,
         },
         {
           Header: '1',
@@ -936,7 +936,7 @@ export const YearColumn = {
       columns: [
         {
           Header: 'Name',
-          accessor: (row: any) => row.employee.name,
+          accessor: (row: any) => row.employee,
         },
         {
           Header: '1',
@@ -1069,7 +1069,7 @@ export const YearColumn = {
       columns: [
         {
           Header: 'Name',
-          accessor: (row: any) => row.employee.name,
+          accessor: (row: any) => row.employee,
         },
         {
           Header: '1',
@@ -1202,7 +1202,7 @@ export const YearColumn = {
       columns: [
         {
           Header: 'Name',
-          accessor: (row: any) => row.employee.name,
+          accessor: (row: any) => row.employee,
         },
         {
           Header: '1',
@@ -1335,7 +1335,7 @@ export const YearColumn = {
       columns: [
         {
           Header: 'Name',
-          accessor: (row: any) => row.employee.name,
+          accessor: (row: any) => row.employee,
         },
         {
           Header: '1',
@@ -1453,6 +1453,10 @@ export const YearColumn = {
           Header: '29',
           accessor: (row: any) => row.monthRecord[28].attendanceStatus,
         },
+        {
+          Header: '30',
+          accessor: (row: any) => row.monthRecord[29].attendanceStatus,
+        },
       ],
     },
     {
@@ -1460,7 +1464,7 @@ export const YearColumn = {
       columns: [
         {
           Header: 'Name',
-          accessor: (row: any) => row.employee.name,
+          accessor: (row: any) => row.employee,
         },
         {
           Header: '1',
