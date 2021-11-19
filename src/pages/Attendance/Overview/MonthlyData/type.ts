@@ -5,7 +5,7 @@ export interface DataType {
 
 export interface EmployeeRecord {
   _id?: string;
-  employee: string;
+  employee: any;
   month: string;
   year: string;
   monthRecord: MonthRecord[];

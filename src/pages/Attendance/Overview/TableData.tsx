@@ -41,7 +41,7 @@ export default function TableData() {
     monthData: null,
     currentColumn: [],
     renderData: {
-      employee: '',
+      employee: {},
       month: '',
       year: '',
       monthRecord: [],

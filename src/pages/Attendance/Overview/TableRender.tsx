@@ -13,16 +13,24 @@ import {
   Box,
   Input,
   Button,
+  Select,
+  MenuItem,
 } from '@material-ui/core';
-import { Magnify as MagnifyIcon } from 'mdi-material-ui';
+import {
+  Magnify as MagnifyIcon,
+  PageLast as PageLastIcon,
+  ChevronRight as ChevronRightIcon,
+  ChevronLeft as ChevronLeftIcon,
+  PageFirst as PageFirstIcon,
+} from 'mdi-material-ui';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     tableWidth: {
-      width: '85%',
+      width: '100%',
     },
     paperWidth: {
-      width: '85%',
+      width: '100%',
     },
     searchPadding: {
       padding: '10px',
@@ -165,21 +173,21 @@ const TableRender: FC<tableRender> = ({ columns, data }) => {
           {/* kaya gagamit na ko ng built in ni react-table */}
 
           <div className='pagination'>
-            <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-              {'<<'}
-            </button>{' '}
-            <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-              {'<'}
-            </button>{' '}
-            <button onClick={() => nextPage()} disabled={!canNextPage}>
-              {'>'}
-            </button>{' '}
-            <button
+            <Button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+              <PageFirstIcon />
+            </Button>{' '}
+            <Button onClick={() => previousPage()} disabled={!canPreviousPage}>
+              <ChevronLeftIcon />
+            </Button>{' '}
+            <Button onClick={() => nextPage()} disabled={!canNextPage}>
+              <ChevronRightIcon />
+            </Button>{' '}
+            <Button
               onClick={() => gotoPage(pageCount - 1)}
               disabled={!canNextPage}
             >
-              {'>>'}
-            </button>{' '}
+              <PageLastIcon />
+            </Button>{' '}
             <span>
               Page{' '}
               <strong>
@@ -188,7 +196,7 @@ const TableRender: FC<tableRender> = ({ columns, data }) => {
             </span>
             <span>
               | Go to page:{' '}
-              <input
+              <Input
                 type='number'
                 defaultValue={pageIndex + 1}
                 onChange={(e) => {
@@ -198,18 +206,18 @@ const TableRender: FC<tableRender> = ({ columns, data }) => {
                 style={{ width: '100px' }}
               />
             </span>{' '}
-            <select
+            <Select
               value={pageSize}
               onChange={(e) => {
                 setPageSize(Number(e.target.value));
               }}
             >
               {[3, 5, 10, 20, 30, 40, 50].map((pageSize) => (
-                <option key={pageSize} value={pageSize}>
+                <MenuItem key={pageSize} value={pageSize}>
                   Show {pageSize}
-                </option>
+                </MenuItem>
               ))}
-            </select>
+            </Select>
           </div>
         </Paper>
       )}

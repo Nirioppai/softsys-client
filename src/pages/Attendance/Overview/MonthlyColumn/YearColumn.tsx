@@ -1335,7 +1335,8 @@ export const YearColumn = {
       columns: [
         {
           Header: 'Name',
-          accessor: (row: any) => row.employee,
+          accessor: (row: any) =>
+            `${row.employee.name.lastName} ${row.employee.name.lastName}, ${row.employee.name.firstName} ${row.employee.name.middleName} `,
         },
         {
           Header: '1',
