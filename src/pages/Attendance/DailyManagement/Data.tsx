@@ -4,7 +4,6 @@ import { Column } from "react-table";
 
 type Data = {
   id: string;
-  date: string;
   firstName: string;
   lastName: string;
   unit: string;
@@ -67,7 +66,6 @@ const createArr = (n: number): Data[] => {
   for (let i = 0; i < n; i += 1) {
     data.push({
       id: randomId(),
-      date: new Date().toDateString(),
       firstName: randomFirstName(),
       lastName: randomLastName(),
       unit: randomUnit(),
@@ -84,10 +82,6 @@ export const columns = [
    {
       Header: "ID",
       accessor: "id"
-   },
-   {
-      Header: "Date Requested",
-      accessor: "date"
    },
    {
       Header: "First Name",
