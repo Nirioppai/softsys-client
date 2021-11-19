@@ -18,8 +18,7 @@ import {
   Input,
   InputAdornment
 } from '@material-ui/core';
-import View from './ViewDetails';
-import {DMContext} from './Context';
+import DMContext from './Context';
 import { CardSearch as SearchIcon } from 'mdi-material-ui';
 interface tableRender {
   columns: any;
@@ -97,7 +96,7 @@ const TableRender: FC<tableRender> = ({ columns, data }) => {
   return (
     <>
       <Paper>
-        <Grid container>
+        {/* <Grid container>
           <Grid item xs={3}>
             <FormControl style={{width: '100%', padding: 20}}>
               <Select
@@ -132,7 +131,7 @@ const TableRender: FC<tableRender> = ({ columns, data }) => {
             />
           </FormControl>
           </Grid>
-        </Grid>
+        </Grid> */}
         <TableContainer>
           <Table style={{width: '100%'}} {...getTableProps()}>
             <TableHead>
@@ -160,9 +159,6 @@ const TableRender: FC<tableRender> = ({ columns, data }) => {
                           <TableCell {...cell.getCellProps()}>{cell.render('Cell')}</TableCell>
                         );
                       })}
-                      <TableCell align='right'>
-                        <View data={data[i]} />
-                      </TableCell>
                     </TableRow>
                   );
                 }

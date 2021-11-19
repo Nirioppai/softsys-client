@@ -1,0 +1,1 @@
+export {getDailyAttendance, getEmployeeInformations} from './DailyManagement';
