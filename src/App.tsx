@@ -19,6 +19,7 @@ import {
   Requests,
   Attendance,
   NotFound,
+  Evaluation,
 } from 'pages';
 
 // axios interceptors
@@ -69,6 +70,11 @@ const App = () => (
                 exact
                 path='/attendance'
                 component={Attendance}
+              />
+              <ProtectedAdminRoute
+                exact
+                path='/evaluation'
+                component={Evaluation}
               />
 
               {/* Misc */}

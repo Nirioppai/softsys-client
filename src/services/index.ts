@@ -5,3 +5,4 @@ export * from './baseUrl';
 export * from './applicants';
 export * from './authService';
 export * from './employees';
+export * from './evaluation';

@@ -6,6 +6,7 @@ import {
   Sitemap as SitemapIcon,
   CalendarAlert as CalendarAlertIcon,
   CalendarAccount as CalendarAccountIcon,
+  ClipboardCheckMultipleOutline as ClipboardCheckIcon
 } from 'mdi-material-ui';
 import { IDrawerListGroups } from 'types';
 
@@ -48,6 +49,11 @@ export const adminDrawerListGroups: IDrawerListGroups[] = [
         icon: <CalendarAccountIcon />,
         link: '/attendance',
       },
+      {
+        name: 'Evaluation',
+        icon: <ClipboardCheckIcon />,
+        link: '/evaluation',
+      }
     ],
   },
 ];
