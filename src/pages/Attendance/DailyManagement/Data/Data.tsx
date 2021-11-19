@@ -14,7 +14,7 @@ export const data = (attendance: any[], employees: any[], day: number, year: num
    const dat: Data[] = [];
    attendance.forEach((att: any)=>{
       employees.forEach((emp: any) => {
-         if(att.employee === emp._id && att.day == day && att.year == year){
+         if(att.employee._id === emp._id && att.day == day && att.year == year){
             dat.push({
                id: emp.employeeId,
                firstName: emp.name.firstName,

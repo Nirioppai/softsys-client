@@ -23,7 +23,7 @@ const DailyManagement: FC = () => {
   const [selectedData, setSelectedData] = useState([]);
   const [employees, setEmployees] = useState<EmployeeTypes[]>([]);
   const [attendance, setAttendance] = useState<AttendanceType[]>([]);
-  const [year, setYear] = useState<number>(1);
+  const [year, setYear] = useState<number>(2021);
   const [month, setMonth] = useState<number>(1);
   const [day, setDay] = useState<number>(1);
 
@@ -47,13 +47,13 @@ const DailyManagement: FC = () => {
   }
 
   useEffect(()=>{
-      let newDate = new Date();
-      let newYear = newDate.getFullYear();
-      let newMonth = newDate.getMonth();
-      let newDay = newDate.getDay();
-      setYear(newYear);
-      setMonth(newMonth);
-      setDay(newDay);
+    let newDate = new Date();
+    let newYear = newDate.getFullYear();
+    let newMonth = newDate.getMonth()+1;
+    let newDay = newDate.getDate();
+    setYear(newYear);
+    setMonth(newMonth);
+    setDay(newDay);
   },[])
 
   useEffect(()=>{
