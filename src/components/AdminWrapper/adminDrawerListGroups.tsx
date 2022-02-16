@@ -9,6 +9,7 @@ import {
   CalendarMonth as CalendarMonthIcon,
   AccountCheck as AccountCheckIcon,
   CalendarText as CalendarTextIcon,
+  Qrcode as QrcodeIcon
 } from 'mdi-material-ui';
 import { DrawerListGroupsOptions } from '../../types';
 
@@ -70,6 +71,11 @@ export const adminDrawerListGroups: DrawerListGroupsOptions[] = [
         name: 'Daily Attendance',
         icon: <CalendarTextIcon />,
         link: '/attendance/daily-attendance',
+      },
+      {
+        name: 'Attendance QR',
+        icon: <QrcodeIcon />,
+        link: '/attendance/qr',
       },
     ],
   },

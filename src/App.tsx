@@ -19,6 +19,7 @@ import {
   DailyManagement,
   NotFound,
   DailyAttendance,
+  QrCode
 } from 'pages';
 
 function App() {
@@ -34,6 +35,11 @@ function App() {
           <Switch>
             {/* Auth */}
             <Route exact path='/' component={Portal} />
+            <ProtectedAdminRoute
+              exact
+              path='/attendance/qr'
+              component={QrCode}
+            />
             <Route exact path='/admin/login' component={AdminLogin} />
 
             {/* Admin */}
