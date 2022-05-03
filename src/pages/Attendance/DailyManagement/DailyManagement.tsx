@@ -112,7 +112,7 @@ const DailyManagement: FC = () => {
               >
                 {monthNames.map((mon, index)=>{
                   return(
-                    <MenuItem value={index+1}>{mon}</MenuItem>
+                    <MenuItem key={index} value={index+1}>{mon}</MenuItem>
                   )
                 })}
               </Select>
